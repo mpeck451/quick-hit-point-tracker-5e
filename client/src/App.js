@@ -6,11 +6,27 @@ import { MainTracker } from './main-tracker.js'
 function App() {
   const [playerProfile, setPlayerProfile] = useState({
     isNewUser: true,
+    playerName: "Mason Peck",
   })
+  const toggleNewUser = () => {
+    alert(playerProfile.isNewUser)
+    setPlayerProfile((prev) => ({
+      ...prev,
+      isNewUser: !prev.isNewUser
+
+    }));
+  }  
+  
   return (
     <div className="App">
       <h1>Hello world!</h1>
-      {playerProfile.isNewUser ? <NewUser /> : <MainTracker />}
+      {playerProfile.isNewUser ? 
+        <NewUser 
+          playerProfile={playerProfile}
+          toggleNewUser={toggleNewUser}/> : 
+        <MainTracker 
+          playerProfile={playerProfile}
+          toggleNewUser={toggleNewUser}/>}
     </div>
   );
 }

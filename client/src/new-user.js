@@ -1,9 +1,9 @@
-export function NewUser() {
+export function NewUser({playerProfile, toggleNewUser}) {
     return (
         <div>
             <h2>Hello New User!</h2>
             <form>
-                <label>Player Name:
+                <label>Player Name: {playerProfile.playerName}
                     <br />
                     <input type="text"></input>
                 </label>
@@ -18,7 +18,12 @@ export function NewUser() {
                     <input type="text"></input>
                 </label>
                 <br />
-                <label>Race:
+                <label>Level:
+                    <br />
+                    <input type="text"></input>
+                </label>
+                <br />
+                <label>Exp:
                     <br />
                     <input type="text"></input>
                 </label>
@@ -32,7 +37,15 @@ export function NewUser() {
                     <br />
                     <input type="text"></input>
                 </label>
+                <br />
+                <label>AC:
+                    <br />
+                    <input type="text"></input>
+                </label>
             </form>
+            <br />
+            <button
+                onClick={toggleNewUser}>Start Tracking!</button>
         </div>
-    )
+    );
 }
