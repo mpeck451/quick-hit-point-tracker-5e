@@ -41,42 +41,42 @@ export function NewUser({playerProfile, setPlayerProfile, toggleNewUser}) {
                 <label>Level:
                     <br />
                     <input 
-                        type="text"
+                        type="number"
                         onChange={(event) => handleChange(event, "characterLevel")}></input>
                 </label>
                 <br />
                 <label>Exp:
                     <br />
                     <input 
-                        type="text"
+                        type="number"
                         onChange={(event) => handleChange(event, "characterExp")}></input>
                 </label>
                 <br />
                 <label>Max Hit Points:
                     <br />
                     <input 
-                        type="text"
+                        type="number"
                         onChange={(event) => handleChange(event, "characterMaxHitPoints")}></input>
                 </label>
                 <br />
                 <label>Current Hit Points:
                     <br />
                     <input 
-                        type="text"
+                        type="number"
                         onChange={(event) => handleChange(event, "characterCurrentHitPoints")}></input>
                 </label>
                 <br />
                 <label>Temporary Hit Points:
                     <br />
                     <input 
-                        type="text"
+                        type="number"
                         onChange={(event) => handleChange(event, "characterTemporaryHitPoints")}></input>
                 </label>
                 <br />
                 <label>AC:
                     <br />
                     <input 
-                        type="text"
+                        type="number"
                         onChange={(event) => handleChange(event, "characterArmorClass")}></input>
                 </label>
             </form>

@@ -14,7 +14,8 @@ function App() {
       isNewUser: !prev.isNewUser
     }));
   }
-  const [damageInput, setDamageInput] = useState(null);
+  const [damageInput, setDamageInput] = useState(Number());
+  const [healInput, setHealInput] = useState(Number());
 
   return (
     <div className="App">
@@ -29,6 +30,8 @@ function App() {
           setPlayerProfile={setPlayerProfile}
           damageInput={damageInput}
           setDamageInput={setDamageInput}
+          healInput={healInput}
+          setHealInput={setHealInput}
           toggleNewUser={toggleNewUser}/>}
     </div>
   );
