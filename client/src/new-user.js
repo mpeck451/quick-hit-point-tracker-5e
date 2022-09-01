@@ -8,6 +8,7 @@ export function NewUser({playerProfile, setPlayerProfile, toggleNewUser}) {
     return (
         <div>
             <h2>Hello New User!</h2>
+            <p>Enter your character's information to get started.</p>
             <form>
                 <label>Player Name:
                     <br />
@@ -63,6 +64,13 @@ export function NewUser({playerProfile, setPlayerProfile, toggleNewUser}) {
                     <input 
                         type="text"
                         onChange={(event) => handleChange(event, "characterCurrentHitPoints")}></input>
+                </label>
+                <br />
+                <label>Temporary Hit Points:
+                    <br />
+                    <input 
+                        type="text"
+                        onChange={(event) => handleChange(event, "characterTemporaryHitPoints")}></input>
                 </label>
                 <br />
                 <label>AC:
