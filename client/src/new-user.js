@@ -23,6 +23,13 @@ export function NewUser({playerProfile, setPlayerProfile, toggleNewUser}) {
                         onChange={(event) => handleChange(event, "characterName")}></input>
                 </label>
                 <br />
+                <label>Race:
+                    <br />
+                    <input 
+                        type="text"
+                        onChange={(event) => handleChange(event, "characterRace")}></input>
+                </label>
+                <br />
                 <label>Class:
                     <br />
                     <input 
