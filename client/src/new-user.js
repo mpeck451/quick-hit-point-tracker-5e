@@ -1,4 +1,4 @@
-export function NewUser({playerProfile, setPlayerProfile, toggleNewUser}) {
+export function NewUser({playerProfile, setPlayerProfile, toggleNewUser, currentHp, setCurrentHp}) {
     const handleChange = (event, field) => {
         setPlayerProfile((prev) => ({
             ...prev,
@@ -63,7 +63,7 @@ export function NewUser({playerProfile, setPlayerProfile, toggleNewUser}) {
                     <br />
                     <input 
                         type="number"
-                        onChange={(event) => handleChange(event, "characterCurrentHitPoints")}></input>
+                        onChange={(event) => setCurrentHp(event.target.value)}></input>
                 </label>
                 <br />
                 <label>Temporary Hit Points:
