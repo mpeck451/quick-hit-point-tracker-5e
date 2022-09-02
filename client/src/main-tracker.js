@@ -1,4 +1,5 @@
-export function MainTracker({playerProfile, 
+export function MainTracker({
+    playerProfile, 
     setPlayerProfile, 
     toggleNewUser, 
     damageInput, 
@@ -13,35 +14,21 @@ export function MainTracker({playerProfile,
         <li id={item}>{item}</li>
     );
 
-    const restoreHp = (pointsHealed) => {
+    const restoreHp = (pointsHealed, isMax) => {
+        const newRestoreHistory = isMax ? "Hit points restored to maximum value." : `${pointsHealed} hit points restored. `
         setPlayerProfile((prev) => ({
             ...prev,
-            characterCurrentHitPoints: hp + pointsHealed,
-            hitPointHistory: [...playerProfile.hitPointHistory, `${pointsHealed} hit points restored. `],
+            characterCurrentHitPoints: isMax ? maxHp : hp + pointsHealed,
+            hitPointHistory: [...playerProfile.hitPointHistory, newRestoreHistory],
         }));
     }
 
-    const restoreHpToMax = () => {
+    const reduceHp = (pointsLost, isZero) => {
+        const newDamageHistory = isZero ? "Hit points reduced to 0." : `${pointsLost} damage taken.`
         setPlayerProfile((prev) => ({
             ...prev,
-            characterCurrentHitPoints: maxHp,
-            hitPointHistory: [...playerProfile.hitPointHistory, "Hit points restored to maximum value."]
-        }))
-    }
-
-    const reduceHp = (pointsLost) => {
-        setPlayerProfile((prev) => ({
-            ...prev,
-            characterCurrentHitPoints: hp - pointsLost,
-            hitPointHistory: [...playerProfile.hitPointHistory, `${pointsLost} damage taken.`]
-        }));
-    }
-
-    const reduceHpToZero = () => {
-        setPlayerProfile((prev) => ({
-            ...prev,
-            characterCurrentHitPoints: 0,
-            hitPointHistory: [...playerProfile.hitPointHistory, "Hit points reduced to 0."]
+            characterCurrentHitPoints: isZero ? 0 : hp - pointsLost,
+            hitPointHistory: [...playerProfile.hitPointHistory, newDamageHistory]
         }));
     }
 
@@ -91,14 +78,14 @@ export function MainTracker({playerProfile,
                 if (hp - damageInput > 0) {
                     reduceHp(damageInput);
                 } else {
-                    reduceHpToZero();
+                    reduceHp(damageInput, true);
                 }
             break;
             case 'heal': 
                 if (hp + healInput < maxHp) {
                     restoreHp(healInput);
                 } else {
-                    restoreHpToMax();
+                    restoreHp(healInput, true);
                 }
             break;
             default: console.log("Error: invalid type for handleEnterPress function argument.");
