@@ -1,4 +1,4 @@
-export function NewUser({playerProfile, setPlayerProfile, toggleNewUser, currentHp, setCurrentHp}) {
+export function NewUser({playerProfile, setPlayerProfile, toggleNewUser}) {
     const handleChange = (event, field) => {
         setPlayerProfile((prev) => ({
             ...prev,
@@ -24,7 +24,7 @@ export function NewUser({playerProfile, setPlayerProfile, toggleNewUser, current
                         onChange={(event) => handleChange(event, "characterName")}></input>
                 </label>
                 <br />
-                <label>Race:
+                {/*<label>Race:
                     <br />
                     <input 
                         type="text"
@@ -50,12 +50,13 @@ export function NewUser({playerProfile, setPlayerProfile, toggleNewUser, current
                     <input 
                         type="number"
                         onChange={(event) => handleChange(event, "characterExp")}></input>
-                </label>
+                </label>*/}
                 <br />
                 <label>Max Hit Points:
                     <br />
                     <input 
                         type="number"
+                        min="0"
                         onChange={(event) => handleChange(event, "characterMaxHitPoints")}></input>
                 </label>
                 <br />
@@ -63,10 +64,11 @@ export function NewUser({playerProfile, setPlayerProfile, toggleNewUser, current
                     <br />
                     <input 
                         type="number"
-                        onChange={(event) => setCurrentHp(event.target.value)}></input>
+                        min="0"
+                        onChange={(event) => handleChange(event, "characterCurrentHitPoints")}></input>
                 </label>
                 <br />
-                <label>Temporary Hit Points:
+                {/*<label>Temporary Hit Points:
                     <br />
                     <input 
                         type="number"
@@ -78,7 +80,7 @@ export function NewUser({playerProfile, setPlayerProfile, toggleNewUser, current
                     <input 
                         type="number"
                         onChange={(event) => handleChange(event, "characterArmorClass")}></input>
-                </label>
+                </label>*/}
             </form>
             <br />
             <button

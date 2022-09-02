@@ -14,7 +14,6 @@ function App() {
       isNewUser: !prev.isNewUser
     }));
   }
-  const [currentHp, setCurrentHp] = useState(Number())
   const [damageInput, setDamageInput] = useState(Number());
   const [healInput, setHealInput] = useState(Number());
 
@@ -25,8 +24,6 @@ function App() {
         <NewUser 
           playerProfile={playerProfile}
           setPlayerProfile={setPlayerProfile}
-          currentHp={currentHp}
-          setCurrentHp={setCurrentHp}
           toggleNewUser={toggleNewUser}/> : 
         <MainTracker 
           playerProfile={playerProfile}
@@ -35,9 +32,7 @@ function App() {
           setDamageInput={setDamageInput}
           healInput={healInput}
           setHealInput={setHealInput}
-          toggleNewUser={toggleNewUser}
-          currentHp={currentHp}
-          setCurrentHp={setCurrentHp}/>}
+          toggleNewUser={toggleNewUser}/>}
     </div>
   );
 }
