@@ -16,6 +16,11 @@ function App() {
   }
   const [damageInput, setDamageInput] = useState(Number());
   const [healInput, setHealInput] = useState(Number());
+  const [isHistoryHidden, setIsHistoryHidden] = useState(true);
+
+  const toggleHistory = () => {
+    setIsHistoryHidden((prev) => !prev);
+  }
 
   return (
     <div className="App">
@@ -32,7 +37,10 @@ function App() {
           setDamageInput={setDamageInput}
           healInput={healInput}
           setHealInput={setHealInput}
-          toggleNewUser={toggleNewUser}/>}
+          toggleNewUser={toggleNewUser}
+          isHistoryHidden={isHistoryHidden}
+          toggleHistory={toggleHistory}
+          />}
     </div>
   );
 }

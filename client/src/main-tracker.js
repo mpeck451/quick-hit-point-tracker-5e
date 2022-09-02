@@ -5,14 +5,19 @@ export function MainTracker({
     damageInput, 
     setDamageInput, 
     healInput, 
-    setHealInput
-}) 
+    setHealInput,
+    isHistoryHidden,
+    toggleHistory
+})
     {
     const hp = playerProfile.characterCurrentHitPoints;
     const maxHp = playerProfile.characterMaxHitPoints;
     const history = playerProfile.hitPointHistory.map((item) =>
         <li id={item}>{item}</li>
     );
+    const historyVisibility = {
+        display: isHistoryHidden ? "none" : "inline"
+    }
 
     const handleInput = (event, type) => {
         if(!isNaN(event.target.value)) {
@@ -120,13 +125,16 @@ export function MainTracker({
                 <button onClick={(event) => handleEnterPress(event, "heal")}>Enter</button>
             </label>
             <br /> 
-            <ul>History:
-                {playerProfile.hitPointHistory.length > 0 ? history: (<li>None</li>)}
-                <button>Hide/Show (NYI)</button>
+            <ul>History: &nbsp;
+                <button
+                    onClick={toggleHistory}>{isHistoryHidden ? "Show" : "Hide"}</button>
+                    <div style={historyVisibility}>
+                    {playerProfile.hitPointHistory.length > 0 ? history: (<li>None</li>)}
+                    </div>
+                <button
+                    style={historyVisibility}
+                    onClick={() => setPlayerProfile((prev) => ({...prev, hitPointHistory: []}))}>Clear History</button>
             </ul>
-            <br />
-            <button
-                onClick={() => setPlayerProfile((prev) => ({...prev, hitPointHistory: []}))}>Clear History</button>
             <br />
             <button
                 onClick={toggleNewUser}>New Character</button>
