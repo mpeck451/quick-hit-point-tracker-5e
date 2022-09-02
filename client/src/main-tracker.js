@@ -77,11 +77,15 @@ export function MainTracker({
     }
 
     const resetHitPoints = () => {
+        const resetHistoryElement = "Hit points reset."
+        const lastElementIndex = playerProfile.hitPointHistory.length - 1
         clearInputs();
-        setPlayerProfile((prev) => ({
+        if (playerProfile.hitPointHistory[lastElementIndex] === resetHistoryElement) {
+            return null
+        } else setPlayerProfile((prev) => ({
             ...prev,
             characterCurrentHitPoints: maxHp,
-            hitPointHistory: [...playerProfile.hitPointHistory, "Hit points reset."]
+            hitPointHistory: [...playerProfile.hitPointHistory, resetHistoryElement]
         }));
     }
 
