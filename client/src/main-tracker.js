@@ -14,38 +14,31 @@ export function MainTracker({
         <li id={item}>{item}</li>
     );
 
-    const restoreHp = (pointsHealed, isMax) => {
-        const newRestoreHistory = isMax ? "Hit points restored to maximum value." : `${pointsHealed} hit points restored. `
-        setPlayerProfile((prev) => ({
-            ...prev,
-            characterCurrentHitPoints: isMax ? maxHp : hp + pointsHealed,
-            hitPointHistory: [...playerProfile.hitPointHistory, newRestoreHistory],
-        }));
-    }
-
-    const reduceHp = (pointsLost, isZero) => {
-        const newDamageHistory = isZero ? "Hit points reduced to 0." : `${pointsLost} damage taken.`
-        setPlayerProfile((prev) => ({
-            ...prev,
-            characterCurrentHitPoints: isZero ? 0 : hp - pointsLost,
-            hitPointHistory: [...playerProfile.hitPointHistory, newDamageHistory]
-        }));
-    }
-
     const handleInput = (event, type) => {
         if(!isNaN(event.target.value)) {
             switch (type) {
-                case 'damage': {
-                    setDamageInput(Number(event.target.value));
-                };
+                case 'damage': setDamageInput(Number(event.target.value));
                 break;
-                case 'heal': {
-                    setHealInput(Number(event.target.value));
-                }
+                case 'heal': setHealInput(Number(event.target.value));
                 break;
                 default: alert("Error: handleInput type argument not recognized.");
             }
         };
+    }
+
+    const calculateHp = (points, type) =>  {
+        const isDamageType = type === 'damage';
+        if (isDamageType) {points = points * -1}
+        const hpCalculation = Number(hp) + Number(points);
+        const isMinMax = isDamageType ? hpCalculation <= 0 : hp + points >= maxHp;
+        const newHp = isMinMax ? isDamageType ? 0 : maxHp : (hpCalculation);
+        const newRestoreHistory = isMinMax ? "Hit points restored to maximum value." : `${points} hit points restored. `;
+        const newDamageHistory = isMinMax ? "Hit points reduced to 0." : `${Math.abs(points)} damage taken.`
+        setPlayerProfile((prev) => ({
+            ...prev,
+            characterCurrentHitPoints: newHp,
+            hitPointHistory: [...playerProfile.hitPointHistory, isDamageType ? newDamageHistory : newRestoreHistory]
+        }));
     }
 
     const checkForValidInput = (type) => {
@@ -73,23 +66,9 @@ export function MainTracker({
             setHealInput(Number());
             return null;
         }
-        switch (type) {
-            case 'damage':
-                if (hp - damageInput > 0) {
-                    reduceHp(damageInput);
-                } else {
-                    reduceHp(damageInput, true);
-                }
-            break;
-            case 'heal': 
-                if (hp + healInput < maxHp) {
-                    restoreHp(healInput);
-                } else {
-                    restoreHp(healInput, true);
-                }
-            break;
-            default: console.log("Error: invalid type for handleEnterPress function argument.");
-        }
+        if (type === 'damage') {
+            calculateHp(damageInput, 'damage');
+        } else calculateHp(healInput, 'heal');
         setDamageInput(Number()); 
         setHealInput(Number());
     }
