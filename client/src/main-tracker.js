@@ -122,6 +122,7 @@ export function MainTracker({
             <br /> 
             <ul>History:
                 {playerProfile.hitPointHistory.length > 0 ? history: (<li>None</li>)}
+                <button>Hide/Show (NYI)</button>
             </ul>
             <br />
             <button
