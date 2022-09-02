@@ -26,6 +26,11 @@ export function MainTracker({
         };
     }
 
+    function clearInputs() {
+        setDamageInput(Number()); 
+        setHealInput(Number());
+    }
+
     const calculateHp = (points, type) =>  {
         const isDamageType = type === 'damage';
         if (isDamageType) {points = points * -1}
@@ -59,18 +64,25 @@ export function MainTracker({
 
     const handleEnterPress = (event, type) => {
         const isValidInput = checkForValidInput(type)
-        if (event.key !== "Enter") {
+        if (event.key !== "Enter" && event.type !== "click") {
             return null;
         } else if (!isValidInput) {
-            setDamageInput(Number()); 
-            setHealInput(Number());
+            clearInputs();
             return null;
         }
         if (type === 'damage') {
             calculateHp(damageInput, 'damage');
         } else calculateHp(healInput, 'heal');
-        setDamageInput(Number()); 
-        setHealInput(Number());
+        clearInputs();
+    }
+
+    const resetHitPoints = () => {
+        clearInputs();
+        setPlayerProfile((prev) => ({
+            ...prev,
+            characterCurrentHitPoints: maxHp,
+            hitPointHistory: [...playerProfile.hitPointHistory, "Hit points reset."]
+        }));
     }
 
     return (
@@ -78,7 +90,12 @@ export function MainTracker({
             <h2>Hello Main Tracker!</h2>
             <h3>{playerProfile.characterName} {/*- ({playerProfile.characterRace} {playerProfile.characterClass} {playerProfile.characterLevel})*/}</h3>
             <p>AC: {playerProfile.characterArmorClass}</p>
+            <div id="hp-interface">
             <p>Hit Points: {hp}/{maxHp}</p>
+            <button
+                onClick={resetHitPoints}>Reset Hit Points</button>
+            </div>
+            <br />
             <label>Take Damage:&nbsp;
                 <input 
                     type="number" 
@@ -86,6 +103,7 @@ export function MainTracker({
                     value={damageInput} 
                     onChange={(event) => handleInput(event, 'damage')} 
                     onKeyPress={(event) => handleEnterPress(event, "damage")}></input>
+                <button onClick={(event) => handleEnterPress(event, "damage")}>Enter</button>
             </label>
             <br /> 
             <label>Restore Health:&nbsp;
@@ -95,6 +113,7 @@ export function MainTracker({
                     value={healInput} 
                     onChange={(event) => handleInput(event, 'heal')} 
                     onKeyPress={(event) => handleEnterPress(event, 'heal')}></input>
+                <button onClick={(event) => handleEnterPress(event, "heal")}>Enter</button>
             </label>
             <br /> 
             <ul>History:
@@ -102,7 +121,7 @@ export function MainTracker({
             </ul>
             <br />
             <button
-                onClick={() => setPlayerProfile((prev) => ({...prev, hitPointHistory: []}))}>Reset History</button>
+                onClick={() => setPlayerProfile((prev) => ({...prev, hitPointHistory: []}))}>Clear History</button>
             <br />
             <button
                 onClick={toggleNewUser}>New Character</button>
