@@ -46,31 +46,48 @@ export function MainTracker({
         points = Number(points);
         let newHp = hp;
         let newTempHp = tempHp;
-        let newHistoryItem = "NYI";
+        let newHistoryItem;
+
+        const handlePluralPoints = (pointValue) => {
+            return pointValue > 1 ? "points" : "point";
+        }
+
+        const calculateDamage = () => {
+            if (tempHp > 0) {
+                const damageDifference = tempHp - points;
+                if (damageDifference <= 0) {
+                    newTempHp = 0;
+                    newHp = hp + damageDifference <= 0 ? 0 : hp + damageDifference;
+                    newHistoryItem = `Temporary hit points reduced to 0. ${Math.abs(damageDifference)} hit ${handlePluralPoints(Math.abs(damageDifference))} lost.`
+                } else {
+                    newTempHp = damageDifference
+                    newHistoryItem = `${points} temporary hit ${handlePluralPoints(points)} lost.`
+                }
+            } else {
+                newHp = hp - points <= 0 ? 0 : hp - points;
+                newHistoryItem = hp - points <= 0 ? "Hit points reduced to 0." : `${points} hit ${handlePluralPoints(points)} lost.`
+            }
+        }
+
+        const calculateHeal = () => {
+            newHp = hp + points >= maxHp ? maxHp : hp + points;
+            newHistoryItem = hp + points >= maxHp ? "Hit points restored to maximum value." : `${points} hit ${handlePluralPoints(points)} restored. `;
+        }
+
+        const calculateTemp = () => {
+            newTempHp = tempHp + points;
+            newHistoryItem = `${points} temporary hit ${handlePluralPoints(points)} gained.`;
+        }
+
         switch(type) {
             case 'damage': 
-                if (tempHp > 0) {
-                    const damageDifference = tempHp - points;
-                    if (damageDifference <= 0) {
-                        newTempHp = 0;
-                        newHp = hp + damageDifference <= 0 ? 0 : hp + damageDifference;
-                        newHistoryItem = `Temporary hit points reduced to 0. ${Math.abs(damageDifference)} hit points lost.`
-                    } else {
-                        newTempHp = damageDifference
-                        newHistoryItem = `${points} temporary hit points lost.`
-                    }
-                } else {
-                    newHp = hp - points <= 0 ? 0 : hp - points;
-                    newHistoryItem = hp - points <= 0 ? "Hit points reduced to 0." : `${points} hit points lost.`
-                }
+                calculateDamage();
             break;
             case 'heal':
-                newHp = hp + points >= maxHp ? maxHp : hp + points;
-                newHistoryItem = hp + points >= maxHp ? "Hit points restored to maximum value." : `${points} hit points restored. `;
+                calculateHeal();
             break;
             case 'temp':
-                newTempHp = tempHp + points;
-                newHistoryItem = `${points} temporary hit points gained.`
+                calculateTemp();
             break;
             default: alert("Error: calculateHp argument 'type' not recognized.");
         }
