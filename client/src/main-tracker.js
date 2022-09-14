@@ -12,6 +12,7 @@ export function MainTracker({
     {
     const hp = playerProfile.characterCurrentHitPoints;
     const maxHp = playerProfile.characterMaxHitPoints;
+    const tempHp = playerProfile.temporaryHitPoints;
     const history = playerProfile.hitPointHistory.map((item) =>
         <li id={item}>{item}</li>
     );
@@ -101,6 +102,7 @@ export function MainTracker({
             <p>AC: {playerProfile.characterArmorClass}</p>
             <div id="hp-interface">
             <p>Hit Points: {hp}/{maxHp}</p>
+            {tempHp !== 0 && (<p>Temporary Hit Points: {tempHp}</p>)}
             <button
                 onClick={resetHitPoints}>Reset Hit Points</button>
             </div>

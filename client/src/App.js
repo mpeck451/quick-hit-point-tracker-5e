@@ -6,6 +6,7 @@ import { MainTracker } from './main-tracker.js'
 function App() {
   const [playerProfile, setPlayerProfile] = useState({
     isNewUser: true,
+    temporaryHitPoints: 0,
     hitPointHistory: [],
   })
   const toggleNewUser = () => {
