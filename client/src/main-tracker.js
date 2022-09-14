@@ -12,9 +12,9 @@ export function MainTracker({
     toggleHistory
 })
     {
-    const hp = playerProfile.characterCurrentHitPoints;
-    const maxHp = playerProfile.characterMaxHitPoints;
-    const tempHp = playerProfile.temporaryHitPoints;
+    const hp = Number(playerProfile.characterCurrentHitPoints);
+    const maxHp = Number(playerProfile.characterMaxHitPoints);
+    const tempHp = Number(playerProfile.temporaryHitPoints);
     const history = playerProfile.hitPointHistory.map((item) =>
         <li id={item}>{item}</li>
     );
@@ -39,9 +39,49 @@ export function MainTracker({
     function clearInputs() {
         setDamageInput(Number()); 
         setHealInput(Number());
+        setTempInput(Number());
     }
 
     const calculateHp = (points, type) =>  {
+        points = Number(points);
+        let newHp = hp;
+        let newTempHp = tempHp;
+        let newHistoryItem = "NYI";
+        switch(type) {
+            case 'damage': 
+                if (tempHp > 0) {
+                    const damageDifference = tempHp - points;
+                    if (damageDifference <= 0) {
+                        newTempHp = 0;
+                        newHp = hp + damageDifference <= 0 ? 0 : hp + damageDifference;
+                        newHistoryItem = `Temporary hit points reduced to 0. ${Math.abs(damageDifference)} hit points lost.`
+                    } else {
+                        newTempHp = damageDifference
+                        newHistoryItem = `${points} temporary hit points lost.`
+                    }
+                } else {
+                    newHp = hp - points <= 0 ? 0 : hp - points;
+                    newHistoryItem = hp - points <= 0 ? "Hit points reduced to 0." : `${points} hit points lost.`
+                }
+            break;
+            case 'heal':
+                newHp = hp + points >= maxHp ? maxHp : hp + points;
+                newHistoryItem = hp + points >= maxHp ? "Hit points restored to maximum value." : `${points} hit points restored. `;
+            break;
+            case 'temp':
+                newTempHp = tempHp + points;
+                newHistoryItem = `${points} temporary hit points gained.`
+            break;
+            default: alert("Error: calculateHp argument 'type' not recognized.");
+        }
+        setPlayerProfile((prev)=> ({
+            ...prev,
+            characterCurrentHitPoints: newHp,
+            temporaryHitPoints: newTempHp,
+            hitPointHistory: [...playerProfile.hitPointHistory, newHistoryItem]
+        }));
+
+        /*
         const isDamageType = type === 'damage';
         if (isDamageType) {points = points * -1}
         const hpCalculation = Number(hp) + Number(points);
@@ -54,6 +94,7 @@ export function MainTracker({
             characterCurrentHitPoints: newHp,
             hitPointHistory: [...playerProfile.hitPointHistory, isDamageType ? newDamageHistory : newRestoreHistory]
         }));
+        */
     }
 
     const checkForValidInput = (type) => {
@@ -96,6 +137,7 @@ export function MainTracker({
         } else setPlayerProfile((prev) => ({
             ...prev,
             characterCurrentHitPoints: maxHp,
+            temporaryHitPoints: 0,
             hitPointHistory: [...playerProfile.hitPointHistory, resetHistoryElement]
         }));
     }
