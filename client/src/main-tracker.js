@@ -29,6 +29,8 @@ export function MainTracker({
                 break;
                 case 'heal': setHealInput(Number(event.target.value).toString());
                 break;
+                case 'temp': setTempInput(Number(event.target.value).toString());
+                break;
                 default: alert("Error: handleInput type argument not recognized.");
             }
         };
@@ -66,11 +68,14 @@ export function MainTracker({
                     return false
                 }  else return true
             }
+            case 'temp': {
+                return true
+            }
             default: alert("Error: checkForValidInput type invalid.")
         }
     }
 
-    const handleEnterPress = (event, type) => {
+    const handleEnterPress = (event, type, input) => {
         const isValidInput = checkForValidInput(type)
         if (event.key !== "Enter" && event.type !== "click") {
             return null;
@@ -78,9 +83,7 @@ export function MainTracker({
             clearInputs();
             return null;
         }
-        if (type === 'damage') {
-            calculateHp(damageInput, 'damage');
-        } else calculateHp(healInput, 'heal');
+        calculateHp(input, type);
         clearInputs();
     }
 
@@ -115,18 +118,28 @@ export function MainTracker({
                     min="0"
                     value={damageInput} 
                     onChange={(event) => handleInput(event, 'damage')} 
-                    onKeyPress={(event) => handleEnterPress(event, "damage")}></input>
-                <button onClick={(event) => handleEnterPress(event, "damage")}>Enter</button>
+                    onKeyPress={(event) => handleEnterPress(event, 'damage', damageInput)}></input>
+                <button onClick={(event) => handleEnterPress(event, 'damage', damageInput)}>Enter</button>
             </label>
             <br /> 
-            <label>Restore Health:&nbsp;
+            <label>Restore Hit Points:&nbsp;
                 <input 
                     type="number"
                     min="0" 
                     value={healInput} 
                     onChange={(event) => handleInput(event, 'heal')} 
-                    onKeyPress={(event) => handleEnterPress(event, 'heal')}></input>
-                <button onClick={(event) => handleEnterPress(event, "heal")}>Enter</button>
+                    onKeyPress={(event) => handleEnterPress(event, 'heal', healInput)}></input>
+                <button onClick={(event) => handleEnterPress(event, 'heal', healInput)}>Enter</button>
+            </label>
+            <br /> 
+            <label>Gain Tempoarary Hit Points&nbsp;
+                <input 
+                    type="number"
+                    min="0" 
+                    value={tempInput} 
+                    onChange={(event) => handleInput(event, 'temp')} 
+                    onKeyPress={(event) => handleEnterPress(event, 'temp', tempInput)}></input>
+                <button onClick={(event) => handleEnterPress(event, 'temp', tempInput)}>Enter</button>
             </label>
             <br /> 
             <ul>History: &nbsp;
