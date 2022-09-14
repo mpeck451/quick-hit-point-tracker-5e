@@ -6,6 +6,8 @@ export function MainTracker({
     setDamageInput, 
     healInput, 
     setHealInput,
+    tempInput,
+    setTempInput,
     isHistoryHidden,
     toggleHistory
 })

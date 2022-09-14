@@ -17,6 +17,7 @@ function App() {
   }
   const [damageInput, setDamageInput] = useState(Number());
   const [healInput, setHealInput] = useState(Number());
+  const [tempInput, setTempInput] = useState(Number());
   const [isHistoryHidden, setIsHistoryHidden] = useState(true);
 
   const toggleHistory = () => {
@@ -38,6 +39,8 @@ function App() {
           setDamageInput={setDamageInput}
           healInput={healInput}
           setHealInput={setHealInput}
+          tempInput={tempInput}
+          setTempInput={setTempInput}
           toggleNewUser={toggleNewUser}
           isHistoryHidden={isHistoryHidden}
           toggleHistory={toggleHistory}
