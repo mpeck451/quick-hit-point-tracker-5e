@@ -12,9 +12,18 @@ function App() {
     hitPointHistory: [],
   })
   const toggleNewUser = () => {
-    setPlayerProfile((prev) => ({
+    if (playerProfile.isNewUser) {
+      setPlayerProfile((prev) => ({
+        ...prev,
+        isNewUser: false
+      }));
+    } else setPlayerProfile((prev) => ({
       ...prev,
-      isNewUser: !prev.isNewUser
+      temporaryHitPoints: 0,
+      characterMaxHitPoints: 0,
+      characterCurrentHitPoints: 0,
+      hitPointHistory: [],
+      isNewUser: true
     }));
   }
   const [damageInput, setDamageInput] = useState(Number());
