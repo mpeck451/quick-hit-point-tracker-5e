@@ -1,3 +1,5 @@
+import './App.css';
+
 export function MainTracker({
     playerProfile, 
     setPlayerProfile, 
@@ -9,7 +11,9 @@ export function MainTracker({
     tempInput,
     setTempInput,
     isHistoryHidden,
-    toggleHistory
+    toggleHistory,
+    isDarkMode,
+    inputStyle
 })
     {
     const hp = Number(playerProfile.characterCurrentHitPoints);
@@ -152,51 +156,64 @@ export function MainTracker({
             <p>Hit Points: {hp}/{maxHp}</p>
             {tempHp !== 0 && (<p>Temporary Hit Points: {tempHp}</p>)}
             <button
+                className={inputStyle}
                 onClick={resetHitPoints}>Reset Hit Points</button>
             </div>
             <br />
             <label>Take Damage:&nbsp;
                 <input 
+                    className={inputStyle}
                     type="number" 
                     min="0"
                     value={damageInput} 
                     onChange={(event) => handleInput(event, 'damage')} 
                     onKeyPress={(event) => handleEnterPress(event, 'damage', damageInput)}></input>
-                <button onClick={(event) => handleEnterPress(event, 'damage', damageInput)}>Enter</button>
+                <button 
+                    className={inputStyle}
+                    onClick={(event) => handleEnterPress(event, 'damage', damageInput)}>Enter</button>
             </label>
             <br /> 
             <label>Restore Hit Points:&nbsp;
                 <input 
+                    className={inputStyle}
                     type="number"
                     min="0" 
                     value={healInput} 
                     onChange={(event) => handleInput(event, 'heal')} 
                     onKeyPress={(event) => handleEnterPress(event, 'heal', healInput)}></input>
-                <button onClick={(event) => handleEnterPress(event, 'heal', healInput)}>Enter</button>
+                <button 
+                    className={inputStyle}
+                    onClick={(event) => handleEnterPress(event, 'heal', healInput)}>Enter</button>
             </label>
             <br /> 
             <label>Gain Tempoarary Hit Points&nbsp;
                 <input 
+                    className={inputStyle}
                     type="number"
                     min="0" 
                     value={tempInput} 
                     onChange={(event) => handleInput(event, 'temp')} 
                     onKeyPress={(event) => handleEnterPress(event, 'temp', tempInput)}></input>
-                <button onClick={(event) => handleEnterPress(event, 'temp', tempInput)}>Enter</button>
+                <button 
+                    className={inputStyle}
+                    onClick={(event) => handleEnterPress(event, 'temp', tempInput)}>Enter</button>
             </label>
             <br /> 
             <ul>History: &nbsp;
                 <button
+                    className={inputStyle}
                     onClick={toggleHistory}>{isHistoryHidden ? "Show" : "Hide"}</button>
                     <div style={historyVisibility}>
                     {playerProfile.hitPointHistory.length > 0 ? history: (<li>None</li>)}
                     </div>
                 <button
+                    className={inputStyle}
                     style={historyVisibility}
                     onClick={() => setPlayerProfile((prev) => ({...prev, hitPointHistory: []}))}>Clear History</button>
             </ul>
             <br />
             <button
+                className={inputStyle}
                 onClick={toggleNewUser}>New Character</button>
         </div>
     )

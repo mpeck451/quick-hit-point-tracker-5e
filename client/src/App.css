@@ -7,3 +7,17 @@
     background-color: white;
     color: black;
 }
+
+.input-dark {
+    border: solid white 1px;
+    border-radius: 5px;
+    color: white;
+    background-color: black;
+}
+
+.input-light {
+    border: solid black 1px;
+    border-radius: 5px;
+    color: black;
+    background-color: white;
+}

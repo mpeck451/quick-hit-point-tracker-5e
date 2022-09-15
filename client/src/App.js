@@ -22,7 +22,9 @@ function App() {
   const [isHistoryHidden, setIsHistoryHidden] = useState(true);
   const toggleHistory = () => setIsHistoryHidden((prev) => !prev);
 
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  //Dark mode programming.
+  const [isDarkMode, setIsDarkMode] = useState(true);
+  const inputStyle = isDarkMode ? "input-dark" : "input-light";
   const toggleDarkMode = () => setIsDarkMode((prev) => !prev);
   useEffect(() => {
     document.body.classList.add(`${isDarkMode ? 'dark-mode' : 'light-mode'}`);
@@ -31,16 +33,18 @@ function App() {
     }
   }, [isDarkMode]);
 
-
   return (
     <div 
       className="app">
-      <h1>Character Tracker - 5e</h1>
+      <h1>Hit Point Tracker - 5e</h1>
       {playerProfile.isNewUser ? 
         <NewUser 
           playerProfile={playerProfile}
           setPlayerProfile={setPlayerProfile}
-          toggleNewUser={toggleNewUser}/> : 
+          toggleNewUser={toggleNewUser}
+          isDarkMode={isDarkMode}
+          inputStyle={inputStyle}
+          /> : 
         <MainTracker 
           playerProfile={playerProfile}
           setPlayerProfile={setPlayerProfile}
@@ -53,8 +57,11 @@ function App() {
           toggleNewUser={toggleNewUser}
           isHistoryHidden={isHistoryHidden}
           toggleHistory={toggleHistory}
+          isDarkMode={isDarkMode}
+          inputStyle={inputStyle}
           />}
       <button
+        className={inputStyle}
         onClick={toggleDarkMode}>{isDarkMode ? "Light" : "Dark"} Mode</button>
     </div>
   );

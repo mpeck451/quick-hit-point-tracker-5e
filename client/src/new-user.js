@@ -1,10 +1,13 @@
-export function NewUser({playerProfile, setPlayerProfile, toggleNewUser}) {
+import './App.css';
+
+export function NewUser({playerProfile, setPlayerProfile, toggleNewUser, isDarkMode, inputStyle}) {
     const handleChange = (event, field) => {
         setPlayerProfile((prev) => ({
             ...prev,
             [field]: event.target.value
         }))
     }
+
     return (
         <div>
             <h2>Hello New User!</h2>
@@ -12,7 +15,8 @@ export function NewUser({playerProfile, setPlayerProfile, toggleNewUser}) {
             <form>
                 <label>Player Name:
                     <br />
-                    <input 
+                    <input
+                        className={inputStyle}
                         type="text" 
                         onChange={(event) => handleChange(event, "playerName")}></input>
                 </label>
@@ -20,6 +24,7 @@ export function NewUser({playerProfile, setPlayerProfile, toggleNewUser}) {
                 <label>Character Name:
                     <br />
                     <input 
+                        className={inputStyle}
                         type="text"
                         onChange={(event) => handleChange(event, "characterName")}></input>
                 </label>
@@ -55,6 +60,7 @@ export function NewUser({playerProfile, setPlayerProfile, toggleNewUser}) {
                 <label>Max Hit Points:
                     <br />
                     <input 
+                        className={inputStyle}
                         type="number"
                         min="0"
                         onChange={(event) => handleChange(event, "characterMaxHitPoints")}></input>
@@ -63,6 +69,7 @@ export function NewUser({playerProfile, setPlayerProfile, toggleNewUser}) {
                 <label>Current Hit Points:
                     <br />
                     <input 
+                        className={inputStyle}
                         type="number"
                         min="0"
                         onChange={(event) => handleChange(event, "characterCurrentHitPoints")}></input>
@@ -84,6 +91,7 @@ export function NewUser({playerProfile, setPlayerProfile, toggleNewUser}) {
             </form>
             <br />
             <button
+                className={inputStyle}
                 onClick={toggleNewUser}>Start Tracking!</button>
         </div>
     );
