@@ -2,10 +2,16 @@ import './App.css';
 
 export function NewUser({playerProfile, setPlayerProfile, toggleNewUser, isDarkMode, inputStyle}) {
     const handleChange = (event, field) => {
-        setPlayerProfile((prev) => ({
+        if (field === "characterMaxHitPoints" && Number(playerProfile.characterCurrentHitPoints) >= Number(playerProfile.characterMaxHitPoints)) {
+            setPlayerProfile((prev) => ({
+                ...prev,
+                [field]: event.target.value,
+                characterCurrentHitPoints: event.target.value
+            }));
+        } else setPlayerProfile((prev) => ({
             ...prev,
             [field]: event.target.value
-        }))
+        }));
     }
 
     return (
@@ -61,6 +67,7 @@ export function NewUser({playerProfile, setPlayerProfile, toggleNewUser, isDarkM
                     <br />
                     <input 
                         className={inputStyle}
+                        value={playerProfile.characterMaxHitPoints}
                         type="number"
                         min="0"
                         onChange={(event) => handleChange(event, "characterMaxHitPoints")}></input>
@@ -72,6 +79,8 @@ export function NewUser({playerProfile, setPlayerProfile, toggleNewUser, isDarkM
                         className={inputStyle}
                         type="number"
                         min="0"
+                        max={playerProfile.characterMaxHitPoints ? playerProfile.characterMaxHitPoints : "0"}
+                        value={playerProfile.characterCurrentHitPoints}
                         onChange={(event) => handleChange(event, "characterCurrentHitPoints")}></input>
                 </label>
                 <br />
