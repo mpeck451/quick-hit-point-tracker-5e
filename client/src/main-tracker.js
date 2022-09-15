@@ -49,7 +49,7 @@ export function MainTracker({
         let newHistoryItem;
 
         const handlePluralPoints = (pointValue) => {
-            return pointValue > 1 ? "points" : "point";
+            return pointValue !== 1 ? "points" : "point";
         }
 
         const calculateDamage = () => {
@@ -97,21 +97,6 @@ export function MainTracker({
             temporaryHitPoints: newTempHp,
             hitPointHistory: [...playerProfile.hitPointHistory, newHistoryItem]
         }));
-
-        /*
-        const isDamageType = type === 'damage';
-        if (isDamageType) {points = points * -1}
-        const hpCalculation = Number(hp) + Number(points);
-        const isMinMax = isDamageType ? (hpCalculation <= 0) : (hpCalculation >= maxHp);
-        const newHp = isMinMax ? (isDamageType ? 0 : maxHp) : (hpCalculation);
-        const newRestoreHistory = isMinMax ? "Hit points restored to maximum value." : `${points} hit points restored. `;
-        const newDamageHistory = isMinMax ? "Hit points reduced to 0." : `${Math.abs(points)} damage taken.`
-        setPlayerProfile((prev) => ({
-            ...prev,
-            characterCurrentHitPoints: newHp,
-            hitPointHistory: [...playerProfile.hitPointHistory, isDamageType ? newDamageHistory : newRestoreHistory]
-        }));
-        */
     }
 
     const checkForValidInput = (type) => {
@@ -163,7 +148,6 @@ export function MainTracker({
         <div id="main-tracker">
             <h2>Hello Main Tracker!</h2>
             <h3>{playerProfile.characterName} {/*- ({playerProfile.characterRace} {playerProfile.characterClass} {playerProfile.characterLevel})*/}</h3>
-            <p>AC: {playerProfile.characterArmorClass}</p>
             <div id="hp-interface">
             <p>Hit Points: {hp}/{maxHp}</p>
             {tempHp !== 0 && (<p>Temporary Hit Points: {tempHp}</p>)}
