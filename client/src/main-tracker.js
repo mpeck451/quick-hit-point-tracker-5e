@@ -150,7 +150,6 @@ export function MainTracker({
 
     return (
         <div id="main-tracker">
-            <h2>Hello Main Tracker!</h2>
             <h3>{playerProfile.characterName} {/*- ({playerProfile.characterRace} {playerProfile.characterClass} {playerProfile.characterLevel})*/}</h3>
             <div id="hp-interface">
             <p>Hit Points: {hp}/{maxHp}</p>

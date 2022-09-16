@@ -16,7 +16,6 @@ export function NewUser({playerProfile, setPlayerProfile, toggleNewUser, isDarkM
 
     return (
         <div>
-            <h2>Hello New User!</h2>
             <p>Enter your character's information to get started.</p>
             <form>
                 <label>Player Name:

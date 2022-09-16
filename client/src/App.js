@@ -26,6 +26,13 @@ function App() {
       isNewUser: true
     }));
   }
+
+  /*const [inputObjects, setInputObjects] = useState({
+    damageInput: Number(),
+    healInput: Number(),
+    tempInput: Number()
+  });*/
+
   const [damageInput, setDamageInput] = useState(Number());
   const [healInput, setHealInput] = useState(Number());
   const [tempInput, setTempInput] = useState(Number());
