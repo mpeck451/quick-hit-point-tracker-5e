@@ -49,7 +49,7 @@ function App() {
 
   return (
     <div 
-      className="app">
+      className="app hit-point-box">
       <h1>Hit Point Tracker - 5e</h1>
       {playerProfile.isNewUser ? 
         <NewUser 
