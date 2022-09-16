@@ -170,7 +170,7 @@ export function MainTracker({
                     onClick={(event) => handleEnterPress(event, 'damage', damageInput)}>Enter</button>
             </label>
             <br /> 
-            <label>Restore Hit Points:&nbsp;
+            <label>Restore HP:&nbsp;
                 <input 
                     className={inputStyle}
                     type="number"
@@ -183,7 +183,7 @@ export function MainTracker({
                     onClick={(event) => handleEnterPress(event, 'heal', healInput)}>Enter</button>
             </label>
             <br /> 
-            <label>Gain Tempoarary Hit Points:&nbsp;
+            <label>Gain Tempoarary HP:&nbsp;
                 <input 
                     className={inputStyle}
                     type="number"
