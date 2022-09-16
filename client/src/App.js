@@ -1,4 +1,5 @@
 import './App.css';
+import './App-dark.css';
 import { useState, useEffect } from 'react';
 import { NewUser } from './new-user.js';
 import { MainTracker } from './main-tracker.js'
@@ -38,7 +39,9 @@ function App() {
 
   //Dark mode programming.
   const [isDarkMode, setIsDarkMode] = useState(true);
-  const inputStyle = isDarkMode ? "input-dark" : "input-light";
+  const dynamicStyle = (className) => {
+    return isDarkMode ? className + "-dark" : className + "-light";
+  }
   const toggleDarkMode = () => setIsDarkMode((prev) => !prev);
   useEffect(() => {
     document.body.classList.add(`${isDarkMode ? 'dark-mode' : 'light-mode'}`);
@@ -47,17 +50,17 @@ function App() {
     }
   }, [isDarkMode]);
 
+  
   return (
     <div 
-      className="app hit-point-box">
+      className={dynamicStyle("hit-point-box")}>
       <h1>Hit Point Tracker - 5e</h1>
       {playerProfile.isNewUser ? 
         <NewUser 
           playerProfile={playerProfile}
           setPlayerProfile={setPlayerProfile}
           toggleNewUser={toggleNewUser}
-          isDarkMode={isDarkMode}
-          inputStyle={inputStyle}
+          dynamicStyle={dynamicStyle}
           /> : 
         <MainTracker 
           playerProfile={playerProfile}
@@ -67,11 +70,10 @@ function App() {
           toggleNewUser={toggleNewUser}
           isHistoryHidden={isHistoryHidden}
           toggleHistory={toggleHistory}
-          isDarkMode={isDarkMode}
-          inputStyle={inputStyle}
+          dynamicStyle={dynamicStyle}
           />}
       <button
-        className={inputStyle}
+        className={dynamicStyle("button")}
         onClick={toggleDarkMode}>{isDarkMode ? "Light" : "Dark"} Mode</button>
     </div>
   );

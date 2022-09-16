@@ -1,0 +1,31 @@
+button:hover {
+    background-color: gray;
+    color: white;
+}
+
+.dark-mode {
+    background-color: #222222;
+    color: white;
+}
+
+.input-dark {
+    border: solid white 1px;
+    border-radius: 5px;
+    color: white;
+    background-color: black;
+}
+
+.button-dark {
+    border: solid white 1px;
+    border-radius: 5px;
+    color: white;
+    background-color: black;
+}
+
+.hit-point-box-dark {
+    width: 50%;
+    margin: auto;
+    border: solid white 3px;
+    border-radius: 5px;
+    padding: 20px;
+}

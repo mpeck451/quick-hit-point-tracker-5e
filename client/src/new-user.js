@@ -1,6 +1,6 @@
 import './App.css';
 
-export function NewUser({playerProfile, setPlayerProfile, toggleNewUser, isDarkMode, inputStyle}) {
+export function NewUser({playerProfile, setPlayerProfile, toggleNewUser, dynamicStyle, isDarkMode, inputStyle}) {
     const handleChange = (event, field) => {
         if (field === "characterMaxHitPoints" && Number(playerProfile.characterCurrentHitPoints) >= Number(playerProfile.characterMaxHitPoints)) {
             setPlayerProfile((prev) => ({
@@ -21,7 +21,7 @@ export function NewUser({playerProfile, setPlayerProfile, toggleNewUser, isDarkM
                 <label>Player Name:
                     <br />
                     <input
-                        className={inputStyle}
+                        className={dynamicStyle("input")}
                         type="text" 
                         onChange={(event) => handleChange(event, "playerName")}></input>
                 </label>
@@ -29,7 +29,7 @@ export function NewUser({playerProfile, setPlayerProfile, toggleNewUser, isDarkM
                 <label>Character Name:
                     <br />
                     <input 
-                        className={inputStyle}
+                        className={dynamicStyle("input")}
                         type="text"
                         onChange={(event) => handleChange(event, "characterName")}></input>
                 </label>
@@ -65,7 +65,7 @@ export function NewUser({playerProfile, setPlayerProfile, toggleNewUser, isDarkM
                 <label>Max Hit Points:
                     <br />
                     <input 
-                        className={inputStyle}
+                        className={dynamicStyle("input")}
                         value={playerProfile.characterMaxHitPoints}
                         type="number"
                         min="0"
@@ -75,7 +75,7 @@ export function NewUser({playerProfile, setPlayerProfile, toggleNewUser, isDarkM
                 <label>Current Hit Points:
                     <br />
                     <input 
-                        className={inputStyle}
+                        className={dynamicStyle("input")}
                         type="number"
                         min="0"
                         max={playerProfile.characterMaxHitPoints ? playerProfile.characterMaxHitPoints : "0"}
@@ -99,7 +99,7 @@ export function NewUser({playerProfile, setPlayerProfile, toggleNewUser, isDarkM
             </form>
             <br />
             <button
-                className={inputStyle}
+                className={dynamicStyle("button")}
                 onClick={toggleNewUser}>Start Tracking!</button>
         </div>
     );

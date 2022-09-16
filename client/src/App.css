@@ -3,21 +3,9 @@ button:hover {
     color: white;
 }
 
-.dark-mode {
-    background-color: #222222;
-    color: white;
-}
-
 .light-mode {
     background-color: white;
     color: black;
-}
-
-.input-dark {
-    border: solid white 1px;
-    border-radius: 5px;
-    color: white;
-    background-color: black;
 }
 
 .input-light {
@@ -27,10 +15,17 @@ button:hover {
     background-color: white;
 }
 
-.hit-point-box {
+.button-light {
+    border: solid black 1px;
+    border-radius: 5px;
+    color: black;
+    background-color: white;
+}
+
+.hit-point-box-light {
     width: 50%;
     margin: auto;
-    border: solid white 3px;
+    border: solid black 3px;
     border-radius: 5px;
     padding: 20px;
 }
