@@ -27,15 +27,11 @@ function App() {
     }));
   }
 
-  /*const [inputObjects, setInputObjects] = useState({
+  const [inputObjects, setInputObjects] = useState({
     damageInput: Number(),
     healInput: Number(),
     tempInput: Number()
-  });*/
-
-  const [damageInput, setDamageInput] = useState(Number());
-  const [healInput, setHealInput] = useState(Number());
-  const [tempInput, setTempInput] = useState(Number());
+  });
 
   const [isHistoryHidden, setIsHistoryHidden] = useState(true);
   const toggleHistory = () => setIsHistoryHidden((prev) => !prev);
@@ -66,12 +62,8 @@ function App() {
         <MainTracker 
           playerProfile={playerProfile}
           setPlayerProfile={setPlayerProfile}
-          damageInput={damageInput}
-          setDamageInput={setDamageInput}
-          healInput={healInput}
-          setHealInput={setHealInput}
-          tempInput={tempInput}
-          setTempInput={setTempInput}
+          inputObjects={inputObjects}
+          setInputObjects={setInputObjects}
           toggleNewUser={toggleNewUser}
           isHistoryHidden={isHistoryHidden}
           toggleHistory={toggleHistory}

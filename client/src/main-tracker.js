@@ -4,12 +4,8 @@ export function MainTracker({
     playerProfile, 
     setPlayerProfile, 
     toggleNewUser, 
-    damageInput, 
-    setDamageInput, 
-    healInput, 
-    setHealInput,
-    tempInput,
-    setTempInput,
+    inputObjects,
+    setInputObjects,
     isHistoryHidden,
     toggleHistory,
     isDarkMode,
@@ -19,31 +15,32 @@ export function MainTracker({
     const hp = Number(playerProfile.characterCurrentHitPoints);
     const maxHp = Number(playerProfile.characterMaxHitPoints);
     const tempHp = Number(playerProfile.temporaryHitPoints);
+    const damageInput = Number(inputObjects.damageInput);
+    const healInput = Number(inputObjects.healInput);
+    const tempInput = Number(inputObjects.tempInput);
     const history = playerProfile.hitPointHistory.map((item) =>
         <li id={item}>{item}</li>
     );
     const historyVisibility = {
         display: isHistoryHidden ? "none" : "inline"
-    }
+    };
 
     const handleInput = (event, type) => {
         if(!isNaN(event.target.value)) {
-            switch (type) {
-                case 'damage': setDamageInput(Number(event.target.value).toString());
-                break;
-                case 'heal': setHealInput(Number(event.target.value).toString());
-                break;
-                case 'temp': setTempInput(Number(event.target.value).toString());
-                break;
-                default: alert("Error: handleInput type argument not recognized.");
-            }
+            const inputKey = type + 'Input';
+            setInputObjects((prev) => ({
+                ...prev,
+                [inputKey]: Number(event.target.value).toString()
+            }));
         };
     }
 
     function clearInputs() {
-        setDamageInput(Number()); 
-        setHealInput(Number());
-        setTempInput(Number());
+        setInputObjects({
+            damageInput: 0,
+            healInput: 0,
+            tempInput: 0
+        });
     }
 
     const calculateHp = (points, type) =>  {
