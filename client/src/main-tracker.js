@@ -28,6 +28,7 @@ export function MainTracker({
     const handleInput = (event, type) => {
         if(!isNaN(event.target.value)) {
             const inputKey = type + 'Input';
+            clearInputs();
             setInputObjects((prev) => ({
                 ...prev,
                 [inputKey]: Number(event.target.value).toString()
@@ -173,7 +174,7 @@ export function MainTracker({
                 <input 
                     className={inputStyle}
                     type="number"
-                    min="0" 
+                    min="0"
                     value={healInput} 
                     onChange={(event) => handleInput(event, 'heal')} 
                     onKeyPress={(event) => handleEnterPress(event, 'heal', healInput)}></input>
