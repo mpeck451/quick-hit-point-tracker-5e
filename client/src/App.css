@@ -1,10 +1,10 @@
 button:hover {
-    background-color: gray;
+    background-color: #5072A7;
     color: white;
 }
 
-.light-mode {
-    background-color: white;
+.default-mode {
+    background-color: gray;
     color: black;
 }
 
@@ -19,10 +19,11 @@ button:hover {
     border: solid black 1px;
     border-radius: 5px;
     color: black;
-    background-color: white;
+    background-color: #cfcfcf;
 }
 
 .hit-point-box {
+    background-color: white;
     width: 50%;
     margin: auto;
     border: solid black 3px;

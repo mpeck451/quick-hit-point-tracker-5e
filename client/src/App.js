@@ -38,15 +38,15 @@ function App() {
   const toggleHistory = () => setIsHistoryHidden((prev) => !prev);
 
   //Dark mode programming.
-  const [isDarkMode, setIsDarkMode] = useState(true);
+  const [isDarkMode, setIsDarkMode] = useState(false);
   const dynamicStyle = (className) => {
     return isDarkMode ? className + "-dark" : className;
   }
   const toggleDarkMode = () => setIsDarkMode((prev) => !prev);
   useEffect(() => {
-    document.body.classList.add(`${isDarkMode ? 'dark-mode' : 'light-mode'}`);
+    document.body.classList.add(`${isDarkMode ? 'dark-mode' : 'default-mode'}`);
     return () => {
-      document.body.classList.remove(`${isDarkMode ? 'dark-mode' : 'light-mode'}`);
+      document.body.classList.remove(`${isDarkMode ? 'dark-mode' : 'default-mode'}`);
     }
   }, [isDarkMode]);
 
