@@ -18,14 +18,14 @@ export function NewUser({playerProfile, setPlayerProfile, toggleNewUser, dynamic
         <div>
             <p>Enter your character's information to get started.</p>
             <form>
-                <label>Player Name:
+                {/*<label>Player Name:
                     <br />
                     <input
                         className={dynamicStyle("input")}
                         type="text" 
                         onChange={(event) => handleChange(event, "playerName")}></input>
                 </label>
-                <br />
+                <br />*/}
                 <label>Character Name:
                     <br />
                     <input 
