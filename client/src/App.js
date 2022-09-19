@@ -40,7 +40,7 @@ function App() {
   //Dark mode programming.
   const [isDarkMode, setIsDarkMode] = useState(true);
   const dynamicStyle = (className) => {
-    return isDarkMode ? className + "-dark" : className + "-light";
+    return isDarkMode ? className + "-dark" : className;
   }
   const toggleDarkMode = () => setIsDarkMode((prev) => !prev);
   useEffect(() => {

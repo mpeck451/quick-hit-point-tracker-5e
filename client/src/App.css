@@ -8,21 +8,21 @@ button:hover {
     color: black;
 }
 
-.input-light {
+.input {
     border: solid black 1px;
     border-radius: 5px;
     color: black;
     background-color: white;
 }
 
-.button-light {
+.button {
     border: solid black 1px;
     border-radius: 5px;
     color: black;
     background-color: white;
 }
 
-.hit-point-box-light {
+.hit-point-box {
     width: 50%;
     margin: auto;
     border: solid black 3px;
