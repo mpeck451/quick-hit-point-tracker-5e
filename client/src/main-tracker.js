@@ -9,8 +9,6 @@ export function MainTracker({
     isHistoryHidden,
     toggleHistory,
     dynamicStyle,
-    isDarkMode,
-    inputStyle
 })
     {
     const hp = Number(playerProfile.characterCurrentHitPoints);
@@ -149,9 +147,9 @@ export function MainTracker({
 
     return (
         <div id="main-tracker">
-            <h3>{playerProfile.characterName} {/*- ({playerProfile.characterRace} {playerProfile.characterClass} {playerProfile.characterLevel})*/}</h3>
             <div id="hp-interface">
-            <p>Hit Points: {hp}/{maxHp}</p>
+            <h2>{playerProfile.characterName}</h2>
+            <h3>Hit Points: {hp}/{maxHp}</h3>
             {tempHp !== 0 && (<p>Temporary Hit Points: {tempHp}</p>)}
             <button
                 className={dynamicStyle("button")}
@@ -197,11 +195,13 @@ export function MainTracker({
                     onClick={(event) => handleEnterPress(event, 'temp', tempInput)}>Enter</button>
             </label>
             <br /> 
-            <ul>History: &nbsp;
+            <ul
+                className={dynamicStyle("history-container")}>History: &nbsp;
                 <button
                     className={dynamicStyle("button")}
                     onClick={toggleHistory}>{isHistoryHidden ? "Show" : "Hide"}</button>
-                    <div style={historyVisibility}>
+                    <div
+                        style={historyVisibility}>
                     {playerProfile.hitPointHistory.length > 0 ? history: (<li>None</li>)}
                     </div>
                 <button

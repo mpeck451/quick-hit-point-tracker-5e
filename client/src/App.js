@@ -54,7 +54,7 @@ function App() {
   return (
     <div 
       className={dynamicStyle("hit-point-box")}>
-      <h1>Hit Point Tracker - 5e</h1>
+      <h1>Instant Hit Point Tracker</h1>
       {playerProfile.isNewUser ? 
         <NewUser 
           playerProfile={playerProfile}

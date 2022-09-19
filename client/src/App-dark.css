@@ -17,9 +17,17 @@
     background-color: #5d5d5d;
 }
 
+.history-container-dark {
+    border: solid white 2px;
+    border-radius: 5px;
+    padding: 25px;
+}
+
+
 .hit-point-box-dark {
     background-color: black;
     width: 50%;
+    min-width: 500px;
     margin: auto;
     border: solid white 3px;
     border-radius: 5px;
