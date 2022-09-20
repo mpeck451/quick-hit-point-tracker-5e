@@ -1,1 +1,1 @@
-# instant-hit-point-tracker-5e
+# quick-hit-point-tracker-5e
