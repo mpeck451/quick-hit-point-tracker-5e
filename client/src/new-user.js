@@ -16,6 +16,7 @@ export function NewUser({playerProfile, setPlayerProfile, toggleNewUser, dynamic
 
     return (
         <div>
+            <h2>New Character</h2>
             <p>Enter your character's information to get started.</p>
             <form>
                 {/*<label>Player Name:

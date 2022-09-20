@@ -1,5 +1,10 @@
+:root {
+    --hover-color: #5072A7;
+    --button-color-default: #cfcfcf;
+}
+
 button:hover {
-    background-color: #5072A7;
+    background-color: var(--hover-color);
     color: white;
 }
 
@@ -19,15 +24,31 @@ button:hover {
     border: solid black 1px;
     border-radius: 5px;
     color: black;
-    background-color: #cfcfcf;
+    background-color: var(--button-color-default);
 }
 
 .hit-point-box {
     background-color: white;
-    width: 50%;
+    max-width: 500px;
     min-width: 500px;
     margin: auto;
     border: solid black 3px;
     border-radius: 5px;
     padding: 20px;
+}
+
+.settings {
+    font-size: 20px;
+    height: 30px;
+    width: 30px;
+    margin-top: -12px;
+    margin-left: 27px;
+    padding: 2px;
+}
+
+#banner {
+    border-bottom: solid white 3px;
+    display: grid;
+    grid-template-columns: 90% 10%;
+    
 }

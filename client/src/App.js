@@ -54,7 +54,11 @@ function App() {
   return (
     <div 
       className={dynamicStyle("hit-point-box")}>
-      <h1>Instant Hit Point Tracker</h1>
+      <div id="banner">
+        <h1>Quick Hit Point Tracker</h1>
+        <button
+          className={`glyphicon glyphicon-cog settings ${dynamicStyle('button')}`}></button>
+      </div>
       {playerProfile.isNewUser ? 
         <NewUser 
           playerProfile={playerProfile}
