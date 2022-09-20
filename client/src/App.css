@@ -22,12 +22,6 @@ button:hover {
     background-color: #cfcfcf;
 }
 
-.history-container {
-    border: solid black 2px;
-    border-radius: 5px;
-    padding: 25px;
-}
-
 .hit-point-box {
     background-color: white;
     width: 50%;

@@ -195,8 +195,7 @@ export function MainTracker({
                     onClick={(event) => handleEnterPress(event, 'temp', tempInput)}>Enter</button>
             </label>
             <br /> 
-            <ul
-                className={dynamicStyle("history-container")}>History: &nbsp;
+            <ul>History: &nbsp;
                 <button
                     className={dynamicStyle("button")}
                     onClick={toggleHistory}>{isHistoryHidden ? "Show" : "Hide"}</button>
