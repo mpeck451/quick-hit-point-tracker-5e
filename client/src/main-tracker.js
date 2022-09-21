@@ -203,7 +203,9 @@ export function MainTracker({
             <ul>History: &nbsp;
                 <button
                     className={dynamicStyle("button")}
-                    onClick={toggleHistory}>{isHistoryHidden ? "Show" : "Hide"}</button>
+                    onClick={toggleHistory}>{isHistoryHidden ? 
+                        <span className="glyphicon glyphicon-eye-open"></span> : 
+                        <span className="glyphicon glyphicon-eye-close"></span>}</button>
                     <div
                         style={historyVisibility}>
                     {playerProfile.hitPointHistory.length > 0 ? history: (<li>None</li>)}
