@@ -131,6 +131,11 @@ export function MainTracker({
         clearInputs();
     }
 
+    const handleNewCharacter = () => {
+        clearInputs();
+        toggleNewUser();
+    }
+
     const resetHitPoints = () => {
         const resetHistoryElement = "Hit points reset."
         const lastElementIndex = playerProfile.hitPointHistory.length - 1
@@ -211,7 +216,7 @@ export function MainTracker({
             <br />
             <button
                 className={dynamicStyle("button")}
-                onClick={toggleNewUser}>New Character</button>
+                onClick={handleNewCharacter}>New Character</button>
         </div>
     )
 }
