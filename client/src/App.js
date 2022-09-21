@@ -4,6 +4,7 @@ import './App-dark.css';
 import { useState, useEffect } from 'react';
 import { NewUser } from './new-user.js';
 import { MainTracker } from './main-tracker.js'
+import { DeathSavingThrowsTracker } from './death-saving-throws-tracker';
 
 function App() {
   const [playerProfile, setPlayerProfile] = useState({
@@ -67,6 +68,7 @@ function App() {
           toggleNewUser={toggleNewUser}
           dynamicStyle={dynamicStyle}
           /> : 
+        playerProfile.characterCurrentHitPoints > 0 ?
         <MainTracker 
           playerProfile={playerProfile}
           setPlayerProfile={setPlayerProfile}
@@ -76,7 +78,8 @@ function App() {
           isHistoryHidden={isHistoryHidden}
           toggleHistory={toggleHistory}
           dynamicStyle={dynamicStyle}
-          />}
+          /> :
+          <DeathSavingThrowsTracker />}
       <button
         className={dynamicStyle("button")}
         onClick={toggleDarkMode}>{isDarkMode ? "Light" : "Dark"} Mode</button>
