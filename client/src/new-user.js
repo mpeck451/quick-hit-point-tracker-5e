@@ -67,7 +67,7 @@ export function NewUser({playerProfile, setPlayerProfile, toggleNewUser, dynamic
                     <br />
                     <input 
                         className={dynamicStyle("input")}
-                        value={playerProfile.characterMaxHitPoints}
+                        value={Number(playerProfile.characterMaxHitPoints).toString()}
                         type="number"
                         min="0"
                         onChange={(event) => handleChange(event, "characterMaxHitPoints")}></input>
@@ -80,7 +80,7 @@ export function NewUser({playerProfile, setPlayerProfile, toggleNewUser, dynamic
                         type="number"
                         min="0"
                         max={playerProfile.characterMaxHitPoints ? playerProfile.characterMaxHitPoints : "0"}
-                        value={playerProfile.characterCurrentHitPoints}
+                        value={Number(playerProfile.characterCurrentHitPoints).toString()}
                         onChange={(event) => handleChange(event, "characterCurrentHitPoints")}></input>
                 </label>
                 <br />
