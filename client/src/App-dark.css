@@ -19,7 +19,7 @@
 
 .hit-point-box-dark {
     background-color: #222222;
-    width: 50%;
+    max-width: 500px;
     min-width: 500px;
     margin: auto;
     border: solid white 3px;
