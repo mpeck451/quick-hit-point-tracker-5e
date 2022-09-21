@@ -53,8 +53,8 @@ function App() {
   
   return (
     <div 
-      className={dynamicStyle("hit-point-box")}>
-      <div id="banner">
+      className={dynamicStyle('hit-point-box')}>
+      <div id={dynamicStyle('banner')}>
         <h1>Quick Hit Point Tracker</h1>
         <button
           className={`glyphicon glyphicon-cog settings ${dynamicStyle('button')}`}></button>

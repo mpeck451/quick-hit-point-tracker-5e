@@ -26,3 +26,9 @@
     border-radius: 5px;
     padding: 20px;
 }
+
+#banner-dark {
+    border-bottom: solid white 3px;
+    display: grid;
+    grid-template-columns: 90% 10%;
+}

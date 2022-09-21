@@ -47,7 +47,7 @@ button:hover {
 }
 
 #banner {
-    border-bottom: solid white 3px;
+    border-bottom: solid black 3px;
     display: grid;
     grid-template-columns: 90% 10%;
     
