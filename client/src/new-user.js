@@ -1,8 +1,12 @@
 import './App.css';
 
-export function NewUser({playerProfile, setPlayerProfile, toggleNewUser, dynamicStyle, isDarkMode, inputStyle}) {
+export function NewUser({playerProfile, setPlayerProfile, toggleNewUser, dynamicStyle}) {
+
+    const maxHp = Number(playerProfile.characterMaxHitPoints);
+    const currentHp = Number(playerProfile.characterCurrentHitPoints)
+
     const handleChange = (event, field) => {
-        if (field === "characterMaxHitPoints" && Number(playerProfile.characterCurrentHitPoints) >= Number(playerProfile.characterMaxHitPoints)) {
+        if (field === "characterMaxHitPoints" && currentHp >= maxHp) {
             setPlayerProfile((prev) => ({
                 ...prev,
                 [field]: event.target.value,
@@ -12,6 +16,12 @@ export function NewUser({playerProfile, setPlayerProfile, toggleNewUser, dynamic
             ...prev,
             [field]: event.target.value
         }));
+    }
+
+    const handleStartTracking = () => {
+        if (maxHp > 0) {
+            toggleNewUser();
+        } else alert("Max Hit Points must be greater than 0.")
     }
 
     return (
@@ -67,7 +77,7 @@ export function NewUser({playerProfile, setPlayerProfile, toggleNewUser, dynamic
                     <br />
                     <input 
                         className={dynamicStyle("input")}
-                        value={Number(playerProfile.characterMaxHitPoints).toString()}
+                        value={maxHp.toString()}
                         type="number"
                         min="0"
                         onChange={(event) => handleChange(event, "characterMaxHitPoints")}></input>
@@ -80,7 +90,7 @@ export function NewUser({playerProfile, setPlayerProfile, toggleNewUser, dynamic
                         type="number"
                         min="0"
                         max={playerProfile.characterMaxHitPoints ? playerProfile.characterMaxHitPoints : "0"}
-                        value={Number(playerProfile.characterCurrentHitPoints).toString()}
+                        value={currentHp.toString()}
                         onChange={(event) => handleChange(event, "characterCurrentHitPoints")}></input>
                 </label>
                 <br />
@@ -101,7 +111,7 @@ export function NewUser({playerProfile, setPlayerProfile, toggleNewUser, dynamic
             <br />
             <button
                 className={dynamicStyle("button")}
-                onClick={toggleNewUser}>Start Tracking!</button>
+                onClick={handleStartTracking}>Start Tracking!</button>
         </div>
     );
 }
