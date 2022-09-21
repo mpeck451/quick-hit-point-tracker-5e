@@ -20,9 +20,9 @@ function App() {
       }));
     } else setPlayerProfile((prev) => ({
       ...prev,
-      temporaryHitPoints: 0,
-      characterMaxHitPoints: 0,
-      characterCurrentHitPoints: 0,
+      temporaryHitPoints: null,
+      characterMaxHitPoints: null,
+      characterCurrentHitPoints: null,
       hitPointHistory: [],
       isNewUser: true
     }));

@@ -30,7 +30,7 @@ export function MainTracker({
             clearInputs();
             setInputObjects((prev) => ({
                 ...prev,
-                [inputKey]: Number(event.target.value).toString()
+                [inputKey]: Number(event.target.value)
             }));
         };
     }
@@ -161,8 +161,8 @@ export function MainTracker({
                     className={dynamicStyle("input")}
                     type="number" 
                     min="0"
-                    value={damageInput} 
-                    onChange={(event) => handleInput(event, 'damage')} 
+                    value={damageInput.toString()} 
+                    onChange={(event) => handleInput(event, 'damage')}
                     onKeyPress={(event) => handleEnterPress(event, 'damage', damageInput)}></input>
                 <button 
                     className={dynamicStyle("button")}
@@ -174,7 +174,7 @@ export function MainTracker({
                     className={dynamicStyle("input")}
                     type="number"
                     min="0"
-                    value={healInput} 
+                    value={healInput.toString()} 
                     onChange={(event) => handleInput(event, 'heal')} 
                     onKeyPress={(event) => handleEnterPress(event, 'heal', healInput)}></input>
                 <button 
@@ -187,7 +187,7 @@ export function MainTracker({
                     className={dynamicStyle("input")}
                     type="number"
                     min="0" 
-                    value={tempInput} 
+                    value={tempInput.toString()} 
                     onChange={(event) => handleInput(event, 'temp')} 
                     onKeyPress={(event) => handleEnterPress(event, 'temp', tempInput)}></input>
                 <button 
