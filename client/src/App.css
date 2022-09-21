@@ -8,35 +8,6 @@ button:hover {
     color: white;
 }
 
-.default-mode {
-    background-color: gray;
-    color: black;
-}
-
-.input {
-    border: solid black 1px;
-    border-radius: 5px;
-    color: black;
-    background-color: white;
-}
-
-.button {
-    border: solid black 1px;
-    border-radius: 5px;
-    color: black;
-    background-color: var(--button-color-default);
-}
-
-.hit-point-box {
-    background-color: white;
-    max-width: 500px;
-    min-width: 500px;
-    margin: auto;
-    border: solid black 3px;
-    border-radius: 5px;
-    padding: 20px;
-}
-
 .settings {
     font-size: 20px;
     height: 30px;
@@ -44,11 +15,4 @@ button:hover {
     margin-top: -12px;
     margin-left: 27px;
     padding: 2px;
-}
-
-#banner {
-    border-bottom: solid black 3px;
-    display: grid;
-    grid-template-columns: 90% 10%;
-    
 }

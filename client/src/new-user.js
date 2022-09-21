@@ -1,5 +1,3 @@
-import './App.css';
-
 export function NewUser({playerProfile, setPlayerProfile, toggleNewUser, dynamicStyle}) {
 
     const maxHp = Number(playerProfile.characterMaxHitPoints);
