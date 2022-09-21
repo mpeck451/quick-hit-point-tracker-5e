@@ -52,6 +52,18 @@ function App() {
     }
   }, [isDarkMode]);
 
+  function clearInputs() {
+    setInputObjects({
+        damageInput: 0,
+        healInput: 0,
+        tempInput: 0
+    });
+  } 
+
+  const handleNewCharacter = () => {
+    clearInputs();
+    toggleNewUser();
+  }
   
   return (
     <div 
@@ -78,8 +90,13 @@ function App() {
           isHistoryHidden={isHistoryHidden}
           toggleHistory={toggleHistory}
           dynamicStyle={dynamicStyle}
+          clearInputs={clearInputs}
+          handleNewCharacter={handleNewCharacter}
           /> :
-          <DeathSavingThrowsTracker />}
+        <DeathSavingThrowsTracker 
+          dynamicStyle={dynamicStyle}
+          handleNewCharacter={handleNewCharacter}
+          />}
       <button
         className={dynamicStyle("button")}
         onClick={toggleDarkMode}>{isDarkMode ? "Light" : "Dark"} Mode</button>

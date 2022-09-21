@@ -1,5 +1,26 @@
-export function DeathSavingThrowsTracker() {
+export function DeathSavingThrowsTracker({
+        dynamicStyle,
+        handleNewCharacter
+    }) 
+    {
     return (
-        <h1>Death Saving Throws</h1>
+        <div>
+            <h2>Death Saving Throws</h2>
+            <label>Successes: &nbsp;
+                <input type='checkbox'></input> &nbsp;
+                <input type='checkbox'></input> &nbsp;
+                <input type='checkbox'></input> &nbsp;
+            </label>
+            <br />
+            <label>Failures: &nbsp;
+                <input type='checkbox'></input> &nbsp;
+                <input type='checkbox'></input> &nbsp;
+                <input type='checkbox'></input> &nbsp;
+            </label>
+            <br />
+            <button
+                className={dynamicStyle("button")}
+                onClick={handleNewCharacter}>New Character</button>
+        </div>
     )
 }
