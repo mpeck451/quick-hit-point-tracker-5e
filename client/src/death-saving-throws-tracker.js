@@ -6,7 +6,7 @@ export function DeathSavingThrowsTracker({
     })
     {
 
-    const successes = Number(playerProfile.deathcdSavingThrowSuccess);
+    const successes = Number(playerProfile.deathSavingThrowSuccess);
     const failures = Number(playerProfile.deathSavingThrowFailure);
 
     const handleStatusChange = (type, operator) => {
