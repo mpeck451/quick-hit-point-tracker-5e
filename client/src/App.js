@@ -96,6 +96,8 @@ function App() {
           handleNewCharacter={handleNewCharacter}
           /> :
         <DeathSavingThrowsTracker 
+          playerProfile={playerProfile}
+          setPlayerProfile={setPlayerProfile}
           dynamicStyle={dynamicStyle}
           handleNewCharacter={handleNewCharacter}
           />}

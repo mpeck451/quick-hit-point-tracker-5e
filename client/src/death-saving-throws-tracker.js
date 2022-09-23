@@ -1,25 +1,39 @@
 export function DeathSavingThrowsTracker({
+        playerProfile,
+        setPlayerProfile,
         dynamicStyle,
         handleNewCharacter
-    }) 
+    })
     {
+
+    const successes = Number(playerProfile.deathSavingThrowSuccess);
+    const failure = Number(playerProfile.deathSavingThrowFailure);
+
+    const deathSavingThrowStatus = (type, number) => {
+        
+    }
+
     return (
         <div>
             <h2>Death Saving Throws</h2>
             <label>Successes: &nbsp;
-                <input type='checkbox'></input> &nbsp;
-                <input type='checkbox'></input> &nbsp;
-                <input type='checkbox'></input> &nbsp;
+                <span className='glyphicon glyphicon-unchecked'></span> &nbsp;
+                <span className='glyphicon glyphicon-unchecked'></span> &nbsp;
+                <span className='glyphicon glyphicon-unchecked'></span> &nbsp;
                 <button
-                    className={dynamicStyle('button')}>Add Success</button>
+                    className={dynamicStyle('button')}><span className="glyphicon glyphicon-plus"></span></button>
+                <button
+                    className={dynamicStyle('button')}><span className="glyphicon glyphicon-minus"></span></button>
             </label>
             <br />
             <label>Failures: &nbsp;
-                <input type='checkbox'></input> &nbsp;
-                <input type='checkbox'></input> &nbsp;
-                <input type='checkbox'></input> &nbsp;
+                <span className='glyphicon glyphicon-unchecked'></span> &nbsp;
+                <span className='glyphicon glyphicon-unchecked'></span> &nbsp;
+                <span className='glyphicon glyphicon-unchecked'></span> &nbsp;
                 <button
-                    className={dynamicStyle('button')}>Add Failure</button>
+                    className={dynamicStyle('button')}><span className="glyphicon glyphicon-plus"></span></button>
+                <button
+                    className={dynamicStyle('button')}><span className="glyphicon glyphicon-minus"></span></button>
             </label>
             <br />
             <button
