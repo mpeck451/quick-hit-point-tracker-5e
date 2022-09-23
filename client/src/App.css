@@ -16,3 +16,11 @@ button:hover {
     margin-left: 27px;
     padding: 2px;
 }
+
+.glyphicon-ok {
+    color: green;
+}
+
+.glyphicon-remove {
+    color: red;
+}
