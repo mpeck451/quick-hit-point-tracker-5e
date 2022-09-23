@@ -13,7 +13,7 @@ export function DeathSavingThrowsTracker({
         type = 'deathSavingThrow' + type;
         setPlayerProfile((prev) => ({
             ...prev,
-            [type]: operator === 'add' ? playerProfile[type] + 1 : playerProfile[type] - 1,
+            [type]: (operator === 'add' && playerProfile[type] < 4) ? playerProfile[type] + 1 : playerProfile[type] - 1,
         }));
     }
 
