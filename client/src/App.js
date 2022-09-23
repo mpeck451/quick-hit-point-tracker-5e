@@ -13,6 +13,8 @@ function App() {
     characterMaxHitPoints: 0,
     characterCurrentHitPoints: 0,
     hitPointHistory: [],
+    deathSavingThrowSuccess: 0,
+    deathSavingThrowFailure: 0
   })
   const toggleNewUser = () => {
     if (playerProfile.isNewUser) {
