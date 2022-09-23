@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react';
 import { NewUser } from './new-user.js';
 import { MainTracker } from './main-tracker.js'
 import { DeathSavingThrowsTracker } from './death-saving-throws-tracker';
+import { Settings } from './settings'
 
 function App() {
   const [playerProfile, setPlayerProfile] = useState({
@@ -30,6 +31,11 @@ function App() {
       hitPointHistory: [],
       isNewUser: true
     }));
+  }
+
+  const [isSettings, setIsSettings] = useState(false)
+  const toggleSettings = () => {
+    setIsSettings((prev) => !prev);
   }
 
   const [inputObjects, setInputObjects] = useState({
@@ -58,7 +64,9 @@ function App() {
     setInputObjects({
         damageInput: 0,
         healInput: 0,
-        tempInput: 0
+        tempInput: 0,
+        deathSavingThrowFailure: 0,
+        deathSavingThrowSuccess: 0
     });
   } 
 
@@ -73,16 +81,18 @@ function App() {
       <div id={dynamicStyle('banner')}>
         <h1>Quick Hit Point Tracker</h1>
         <button
+          onClick={toggleSettings}
           className={`glyphicon glyphicon-cog settings ${dynamicStyle('button')}`}></button>
       </div>
-      {playerProfile.isNewUser ? 
+      {(playerProfile.isNewUser && !isSettings) &&
         <NewUser 
           playerProfile={playerProfile}
           setPlayerProfile={setPlayerProfile}
           toggleNewUser={toggleNewUser}
           dynamicStyle={dynamicStyle}
-          /> : 
-        playerProfile.characterCurrentHitPoints > 0 ?
+        />
+      } 
+      {(!playerProfile.isNewUser && playerProfile.characterCurrentHitPoints > 0 && !isSettings) && 
         <MainTracker 
           playerProfile={playerProfile}
           setPlayerProfile={setPlayerProfile}
@@ -94,16 +104,28 @@ function App() {
           dynamicStyle={dynamicStyle}
           clearInputs={clearInputs}
           handleNewCharacter={handleNewCharacter}
-          /> :
+        />
+      }
+      {(!playerProfile.isNewUser && playerProfile.characterCurrentHitPoints <= 0 && !isSettings) &&
         <DeathSavingThrowsTracker 
           playerProfile={playerProfile}
           setPlayerProfile={setPlayerProfile}
           dynamicStyle={dynamicStyle}
           handleNewCharacter={handleNewCharacter}
-          />}
-      <button
-        className={dynamicStyle("button")}
-        onClick={toggleDarkMode}>{isDarkMode ? "Light" : "Dark"} Mode</button>
+        />
+      }
+      {(isSettings) && 
+        <Settings 
+          playerProfile={playerProfile}
+          setPlayerProfile={setPlayerProfile}
+          dynamicStyle={dynamicStyle}
+          isDarkMode={isDarkMode}
+          toggleDarkMode={toggleDarkMode}
+          clearInputs={clearInputs}
+          isHistoryHidden={isHistoryHidden}
+          handleNewCharacter={handleNewCharacter}
+        />
+      }
     </div>
   );
 }

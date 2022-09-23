@@ -1,13 +1,14 @@
 export function MainTracker({
-    playerProfile, 
-    setPlayerProfile, 
-    toggleNewUser, 
-    inputObjects,
-    setInputObjects,
-    isHistoryHidden,
-    toggleHistory,
-    dynamicStyle,
-})
+        playerProfile, 
+        setPlayerProfile, 
+        toggleNewUser, 
+        inputObjects,
+        setInputObjects,
+        isHistoryHidden,
+        toggleHistory,
+        dynamicStyle,
+        clearInputs
+    })
     {
     const hp = Number(playerProfile.characterCurrentHitPoints);
     const maxHp = Number(playerProfile.characterMaxHitPoints);
@@ -31,14 +32,6 @@ export function MainTracker({
                 [inputKey]: Number(event.target.value)
             }));
         };
-    }
-
-    function clearInputs() {
-        setInputObjects({
-            damageInput: 0,
-            healInput: 0,
-            tempInput: 0
-        });
     }
 
     const calculateHp = (points, type) =>  {
@@ -129,36 +122,13 @@ export function MainTracker({
         clearInputs();
     }
 
-    const handleNewCharacter = () => {
-        clearInputs();
-        toggleNewUser();
-    }
-
-    const resetHitPoints = () => {
-        const resetHistoryElement = "Hit points reset."
-        const lastElementIndex = playerProfile.hitPointHistory.length - 1
-        clearInputs();
-        if (playerProfile.hitPointHistory[lastElementIndex] === resetHistoryElement) {
-            return null
-        } else setPlayerProfile((prev) => ({
-            ...prev,
-            characterCurrentHitPoints: maxHp,
-            temporaryHitPoints: 0,
-            hitPointHistory: [...playerProfile.hitPointHistory, resetHistoryElement]
-        }));
-    }
-
     return (
         <div id="main-tracker">
             <div id="hp-interface">
             <h2>{playerProfile.characterName}</h2>
             <h3>Hit Points: {hp}/{maxHp}</h3>
             {tempHp !== 0 && (<p>Temporary Hit Points: {tempHp}</p>)}
-            <button
-                className={dynamicStyle("button")}
-                onClick={resetHitPoints}>Reset Hit Points</button>
             </div>
-            <br />
             <label>Take Damage:&nbsp;
                 <input 
                     className={dynamicStyle("input")}
@@ -208,15 +178,8 @@ export function MainTracker({
                         style={historyVisibility}>
                     {playerProfile.hitPointHistory.length > 0 ? history: (<li>None</li>)}
                     </div>
-                <button
-                    className={dynamicStyle("button")}
-                    style={historyVisibility}
-                    onClick={() => setPlayerProfile((prev) => ({...prev, hitPointHistory: []}))}>Clear History</button>
             </ul>
             <br />
-            <button
-                className={dynamicStyle("button")}
-                onClick={handleNewCharacter}>New Character</button>
         </div>
-    )
+    );
 }

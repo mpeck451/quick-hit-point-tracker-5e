@@ -6,7 +6,7 @@ export function DeathSavingThrowsTracker({
     })
     {
 
-    const successes = Number(playerProfile.deathSavingThrowSuccess);
+    const successes = Number(playerProfile.deathcdSavingThrowSuccess);
     const failures = Number(playerProfile.deathSavingThrowFailure);
 
     const handleStatusChange = (type, operator) => {
@@ -57,5 +57,5 @@ export function DeathSavingThrowsTracker({
                 className={dynamicStyle('button')}
                 onClick={handleNewCharacter}>New Character</button>
         </div>
-    )
+    );
 }
