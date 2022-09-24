@@ -13,15 +13,15 @@ export function DeathSavingThrowsTracker({
         type = 'deathSavingThrow' + type;
         setPlayerProfile((prev) => ({
             ...prev,
-            [type]: (operator === 'add' && playerProfile[type] < 4) ? playerProfile[type] + 1 : (playerProfile[type] >=0 && playerProfile[type] - 1),
+            [type]: (operator === 'add' && playerProfile[type] < 4) ? playerProfile[type] + 1 : playerProfile[type] - 1,
         }));
     }
 
     const savingThrowStatus = (type, number) => {
         let status = (type === "Success" ? successes: failures) >= number ? type : null;
         switch (status) {
-            case 'Success': return 'glyphicon glyphicon-ok';
-            case 'Failure': return 'glyphicon glyphicon-remove';
+            case 'Success': return 'glyphicon glyphicon-ok'
+            case 'Failure': return 'glyphicon glyphicon-remove'
             default: return 'glyphicon glyphicon-unchecked';
         }
     }
