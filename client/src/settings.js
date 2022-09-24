@@ -6,6 +6,7 @@ export function Settings({
     toggleDarkMode,
     clearInputs,
     isHistoryHidden,
+    historyVisibility,
     handleNewCharacter
     }) 
     {
@@ -25,10 +26,6 @@ export function Settings({
         }));
         alert("Hit Points reset!");
     }
-
-    const historyVisibility = {
-        display: isHistoryHidden ? "none" : "inline"
-    };
 
     return ( 
         <div>

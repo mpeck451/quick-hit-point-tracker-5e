@@ -46,6 +46,9 @@ function App() {
 
   const [isHistoryHidden, setIsHistoryHidden] = useState(true);
   const toggleHistory = () => setIsHistoryHidden((prev) => !prev);
+  const historyVisibility = {
+    display: isHistoryHidden ? "none" : "inline"
+  };
 
   //Dark mode programming.
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -100,6 +103,7 @@ function App() {
           setInputObjects={setInputObjects}
           toggleNewUser={toggleNewUser}
           isHistoryHidden={isHistoryHidden}
+          historyVisibility={historyVisibility}
           toggleHistory={toggleHistory}
           dynamicStyle={dynamicStyle}
           clearInputs={clearInputs}
@@ -123,6 +127,7 @@ function App() {
           toggleDarkMode={toggleDarkMode}
           clearInputs={clearInputs}
           isHistoryHidden={isHistoryHidden}
+          historyVisibility={historyVisibility}
           handleNewCharacter={handleNewCharacter}
         />
       }
