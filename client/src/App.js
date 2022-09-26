@@ -17,8 +17,8 @@ function App() {
     deathSavingThrowSuccess: 0,
     deathSavingThrowFailure: 0
   })
-  const toggleNewUser = () => {
-    if (playerProfile.isNewUser) {
+  const toggleNewUser = (desiredBoolean) => {
+    if (!desiredBoolean) {
       setPlayerProfile((prev) => ({
         ...prev,
         isNewUser: false
@@ -75,7 +75,8 @@ function App() {
 
   const handleNewCharacter = () => {
     clearInputs();
-    toggleNewUser();
+    toggleNewUser(true);
+    setIsSettings(false);
   }
   
   return (
