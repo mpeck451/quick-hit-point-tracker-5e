@@ -6,7 +6,6 @@ export function Settings({
     toggleDarkMode,
     clearInputs,
     isHistoryHidden,
-    historyVisibility,
     handleNewCharacter
     }) 
     {
@@ -41,7 +40,6 @@ export function Settings({
                 <br />    
                 <button
                     className={dynamicStyle("button")}
-                    style={historyVisibility}
                     onClick={() => setPlayerProfile((prev) => ({...prev, hitPointHistory: []}))}>Clear History</button>
                 <br />
                 <button

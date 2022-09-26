@@ -5,7 +5,6 @@ export function MainTracker({
         inputObjects,
         setInputObjects,
         isHistoryHidden,
-        historyVisibility,
         toggleHistory,
         dynamicStyle,
         clearInputs
@@ -20,6 +19,10 @@ export function MainTracker({
     const history = playerProfile.hitPointHistory.map((item) =>
         <li id={item}>{item}</li>
     );
+
+    const historyVisibility = {
+        display: isHistoryHidden ? "none" : "inline"
+      };
 
     const handleInput = (event, type) => {
         if(!isNaN(event.target.value)) {
