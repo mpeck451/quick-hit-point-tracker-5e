@@ -25,13 +25,21 @@ export function Settings({
         alert("Hit Points reset!");
     }
 
+    const clearHistory = () => {
+        setPlayerProfile((prev) => ({...prev, hitPointHistory: []}));
+        alert("History cleared!");
+    }
+
     return ( 
         <div>
             <h2>Settings</h2>
             <h3>Display</h3>
-                <button
-                    className={dynamicStyle("button")}
-                    onClick={toggleDarkMode}>{isDarkMode ? "Light" : "Dark"} Mode</button>
+                <label>Dark Mode: &nbsp;
+                    <input
+                        type="checkbox"
+                        className={dynamicStyle("button")}
+                        onClick={toggleDarkMode}></input>
+                </label>
             <h3>Character</h3>
                 <button
                     className={dynamicStyle("button")}
@@ -39,7 +47,7 @@ export function Settings({
                 <br />    
                 <button
                     className={dynamicStyle("button")}
-                    onClick={() => setPlayerProfile((prev) => ({...prev, hitPointHistory: []}))}>Clear History</button>
+                    onClick={clearHistory}>Clear History</button>
                 <br />
                 <button
                     className={dynamicStyle("button")}
