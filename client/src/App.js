@@ -33,7 +33,7 @@ function App() {
     }));
   }
 
-  const [isSettings, setIsSettings] = useState(false)
+  const [isSettings, setIsSettings] = useState(false);
   const toggleSettings = () => {
     setIsSettings((prev) => !prev);
   }

@@ -1,4 +1,10 @@
-export function NewUser({playerProfile, setPlayerProfile, toggleNewUser, dynamicStyle}) {
+export function NewUser({
+        playerProfile, 
+        setPlayerProfile, 
+        toggleNewUser, 
+        dynamicStyle
+    }) 
+    {
 
     const maxHp = Number(playerProfile.characterMaxHitPoints);
     const currentHp = Number(playerProfile.characterCurrentHitPoints)

@@ -5,7 +5,6 @@ export function Settings({
     isDarkMode,
     toggleDarkMode,
     clearInputs,
-    isHistoryHidden,
     handleNewCharacter
     }) 
     {
