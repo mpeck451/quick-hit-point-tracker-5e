@@ -68,7 +68,7 @@ function App() {
         damageInput: 0,
         healInput: 0,
         tempInput: 0,
-        deathSavingThrowFailure: 1,
+        deathSavingThrowFailure: 0,
         deathSavingThrowSuccess: 0
     });
   } 
