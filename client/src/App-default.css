@@ -32,3 +32,11 @@
     display: grid;
     grid-template-columns: 90% 10%;
 }
+
+#hp-bar {
+    width: 200px;
+    height: 20px;
+    border: 2px solid black;
+    border-radius: 10px;
+    background-color: green;
+}

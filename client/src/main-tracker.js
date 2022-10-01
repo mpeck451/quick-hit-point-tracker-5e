@@ -126,9 +126,10 @@ export function MainTracker({
     return (
         <div id="main-tracker">
             <div id="hp-interface">
-            <h2>{playerProfile.characterName}</h2>
-            <h3>Hit Points: {hp}/{maxHp}</h3>
-            {tempHp !== 0 && (<p>Temporary Hit Points: {tempHp}</p>)}
+                <h2>{playerProfile.characterName}</h2>
+                <div id={dynamicStyle("hp-bar")}></div>
+                <h3>Hit Points: {hp}/{maxHp}</h3>
+                {tempHp !== 0 && (<p>Temporary Hit Points: {tempHp}</p>)}
             </div>
             <label>Take Damage:&nbsp;
                 <input 
