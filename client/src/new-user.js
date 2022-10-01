@@ -44,7 +44,7 @@ export function NewUser({
                 <label>Character Name:
                     <br />
                     <input 
-                        className={dynamicStyle("input")}
+                        className={dynamicStyle("input-text")}
                         type="text"
                         onChange={(event) => handleChange(event, "characterName")}></input>
                 </label>
@@ -80,7 +80,7 @@ export function NewUser({
                 <label>Max Hit Points:
                     <br />
                     <input 
-                        className={dynamicStyle("input")}
+                        className={dynamicStyle("input-number")}
                         value={maxHp.toString()}
                         type="number"
                         min="0"
@@ -90,7 +90,7 @@ export function NewUser({
                 <label>Current Hit Points:
                     <br />
                     <input 
-                        className={dynamicStyle("input")}
+                        className={dynamicStyle("input-number")}
                         type="number"
                         min="0"
                         max={playerProfile.characterMaxHitPoints ? playerProfile.characterMaxHitPoints : "0"}

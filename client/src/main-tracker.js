@@ -133,7 +133,7 @@ export function MainTracker({
             </div>
             <label>Take Damage:&nbsp;
                 <input 
-                    className={dynamicStyle("input")}
+                    className={dynamicStyle("input-number")}
                     type="number" 
                     min="0"
                     value={damageInput.toString()} 
@@ -146,7 +146,7 @@ export function MainTracker({
             <br /> 
             <label>Restore HP:&nbsp;
                 <input 
-                    className={dynamicStyle("input")}
+                    className={dynamicStyle("input-number")}
                     type="number"
                     min="0"
                     value={healInput.toString()} 
@@ -159,7 +159,7 @@ export function MainTracker({
             <br /> 
             <label>Gain Tempoarary HP:&nbsp;
                 <input 
-                    className={dynamicStyle("input")}
+                    className={dynamicStyle("input-number")}
                     type="number"
                     min="0" 
                     value={tempInput.toString()} 

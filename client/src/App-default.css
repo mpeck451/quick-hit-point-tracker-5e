@@ -3,7 +3,15 @@
     color: black;
 }
 
-.input {
+.input-number {
+    width: 50px;
+    border: solid black 1px;
+    border-radius: 5px;
+    color: black;
+    background-color: white;
+}
+
+.input-text {
     border: solid black 1px;
     border-radius: 5px;
     color: black;
