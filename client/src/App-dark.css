@@ -3,7 +3,15 @@
     color: white;
 }
 
-.input-dark {
+.input-number-dark {
+    width: 50px;
+    border: solid white 1px;
+    border-radius: 5px;
+    color: white;
+    background-color: black;
+}
+
+.input-text-dark {
     border: solid white 1px;
     border-radius: 5px;
     color: white;
@@ -38,5 +46,5 @@
     height: 20px;
     border: 2px solid white;
     border-radius: 10px;
-    background-color: green;
+    background-color: red;
 }

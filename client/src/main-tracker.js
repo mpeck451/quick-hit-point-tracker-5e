@@ -1,7 +1,6 @@
 export function MainTracker({
         playerProfile, 
-        setPlayerProfile, 
-        toggleNewUser, 
+        setPlayerProfile,
         inputObjects,
         setInputObjects,
         isHistoryHidden,
@@ -12,6 +11,9 @@ export function MainTracker({
     {
     const hp = Number(playerProfile.characterCurrentHitPoints);
     const maxHp = Number(playerProfile.characterMaxHitPoints);
+    const hpRatio = {
+        width: `${(hp/maxHp)*100}%`
+    };
     const tempHp = Number(playerProfile.temporaryHitPoints);
     const damageInput = Number(inputObjects.damageInput);
     const healInput = Number(inputObjects.healInput);
@@ -127,7 +129,9 @@ export function MainTracker({
         <div id="main-tracker">
             <div id="hp-interface">
                 <h2>{playerProfile.characterName}</h2>
-                <div id={dynamicStyle("hp-bar")}></div>
+                <div id={dynamicStyle("hp-bar")}>
+                    <div className="green-hp" style={hpRatio}></div>
+                </div>
                 <h3>Hit Points: {hp}/{maxHp}</h3>
                 {tempHp !== 0 && (<p>Temporary Hit Points: {tempHp}</p>)}
             </div>
