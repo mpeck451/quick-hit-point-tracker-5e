@@ -38,7 +38,8 @@ export function Settings({
                     <input
                         type="checkbox"
                         className={dynamicStyle("button")}
-                        onClick={toggleDarkMode}></input>
+                        onClick={toggleDarkMode}
+                        checked={isDarkMode}></input>
                 </label>
             <h3>Character</h3>
                 <button
