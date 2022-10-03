@@ -1,6 +1,7 @@
 :root {
     --hover-color: #5072A7;
     --button-color-default: #cfcfcf;
+    --dark-input-background-color: #536872;
 }
 
 button:hover {

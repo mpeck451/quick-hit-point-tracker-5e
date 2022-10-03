@@ -34,12 +34,14 @@ export function Settings({
         <div>
             <h2>Settings</h2>
             <h3>Display</h3>
-                <label>Dark Mode: &nbsp;
-                    <input
-                        type="checkbox"
-                        className={dynamicStyle("button")}
+                <h4>Dark Mode:</h4>
+                <label className="switch">
+                    <input 
+                        type="checkbox" 
+                        checked={isDarkMode} 
                         onClick={toggleDarkMode}
-                        checked={isDarkMode}></input>
+                        />
+                    <span className="slider round"></span>
                 </label>
             <h3>Character</h3>
                 <button

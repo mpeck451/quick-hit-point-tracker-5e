@@ -8,21 +8,21 @@
     border: solid white 1px;
     border-radius: 5px;
     color: white;
-    background-color: black;
+    background-color: var(--dark-input-background-color);
 }
 
 .input-text-dark {
     border: solid white 1px;
     border-radius: 5px;
     color: white;
-    background-color: black;
+    background-color: var(--dark-input-background-color);
 }
 
 .button-dark {
     border: solid white 1px;
     border-radius: 5px;
     color: white;
-    background-color: black;
+    background-color: var(--dark-input-background-color);
 }
 
 .hit-point-box-dark {
