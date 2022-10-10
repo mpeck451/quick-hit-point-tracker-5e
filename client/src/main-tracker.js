@@ -141,44 +141,47 @@ export function MainTracker({
                 </div>
             </div>
             <br />
-            <label>Take Damage:&nbsp;
-                <input 
-                    className={dynamicStyle("input-number")}
-                    type="number" 
-                    min="0"
-                    value={damageInput.toString()} 
-                    onChange={(event) => handleInput(event, 'damage')}
-                    onKeyPress={(event) => handleEnterPress(event, 'damage', damageInput)}></input>
+            <div id='inputs'>
+                <h4>Take Damage:</h4>
+                <label>
+                    <input 
+                        className={dynamicStyle("input-number")}
+                        type="number" 
+                        min="0"
+                        value={damageInput.toString()} 
+                        onChange={(event) => handleInput(event, 'damage')}
+                        onKeyPress={(event) => handleEnterPress(event, 'damage', damageInput)}></input>
+                </label>
                 <button 
-                    className={dynamicStyle("button")}
-                    onClick={(event) => handleEnterPress(event, 'damage', damageInput)}>Enter</button>
-            </label>
-            <br /> 
-            <label>Restore HP:&nbsp;
-                <input 
-                    className={dynamicStyle("input-number")}
-                    type="number"
-                    min="0"
-                    value={healInput.toString()} 
-                    onChange={(event) => handleInput(event, 'heal')} 
-                    onKeyPress={(event) => handleEnterPress(event, 'heal', healInput)}></input>
+                        className={dynamicStyle("button")}
+                        onClick={(event) => handleEnterPress(event, 'damage', damageInput)}>Enter</button>
+                <h4>Restore HP:</h4>
+                <label>
+                    <input 
+                        className={dynamicStyle("input-number")}
+                        type="number"
+                        min="0"
+                        value={healInput.toString()} 
+                        onChange={(event) => handleInput(event, 'heal')} 
+                        onKeyPress={(event) => handleEnterPress(event, 'heal', healInput)}></input>
+                </label>
                 <button 
-                    className={dynamicStyle("button")}
-                    onClick={(event) => handleEnterPress(event, 'heal', healInput)}>Enter</button>
-            </label>
-            <br /> 
-            <label>Gain Tempoarary HP:&nbsp;
-                <input 
-                    className={dynamicStyle("input-number")}
-                    type="number"
-                    min="0" 
-                    value={tempInput.toString()} 
-                    onChange={(event) => handleInput(event, 'temp')} 
-                    onKeyPress={(event) => handleEnterPress(event, 'temp', tempInput)}></input>
+                        className={dynamicStyle("button")}
+                        onClick={(event) => handleEnterPress(event, 'heal', healInput)}>Enter</button>
+                <h4>Gain Temporary HP:</h4>
+                <label>
+                    <input 
+                        className={dynamicStyle("input-number")}
+                        type="number"
+                        min="0" 
+                        value={tempInput.toString()} 
+                        onChange={(event) => handleInput(event, 'temp')} 
+                        onKeyPress={(event) => handleEnterPress(event, 'temp', tempInput)}></input>
+                </label>
                 <button 
-                    className={dynamicStyle("button")}
-                    onClick={(event) => handleEnterPress(event, 'temp', tempInput)}>Enter</button>
-            </label>
+                        className={dynamicStyle("button")}
+                        onClick={(event) => handleEnterPress(event, 'temp', tempInput)}>Enter</button>
+            </div>
             <br /> 
             <ul>History: &nbsp;
                 <button

@@ -5,6 +5,8 @@
 
 .input-number-dark {
     width: 50px;
+    height: 100%;
+    text-align: center;
     border: solid white 1px;
     border-radius: 5px;
     color: white;
