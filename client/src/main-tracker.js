@@ -142,7 +142,7 @@ export function MainTracker({
             </div>
             <br />
             <div id='inputs'>
-                <h4>Take Damage:</h4>
+                <h4 className="input-label">Take Damage:</h4>
                 <label>
                     <input 
                         className={dynamicStyle("input-number")}
@@ -155,7 +155,7 @@ export function MainTracker({
                 <button 
                         className={dynamicStyle("button")}
                         onClick={(event) => handleEnterPress(event, 'damage', damageInput)}>Enter</button>
-                <h4>Restore HP:</h4>
+                <h4 className="input-label">Restore HP:</h4>
                 <label>
                     <input 
                         className={dynamicStyle("input-number")}
@@ -168,7 +168,7 @@ export function MainTracker({
                 <button 
                         className={dynamicStyle("button")}
                         onClick={(event) => handleEnterPress(event, 'heal', healInput)}>Enter</button>
-                <h4>Gain Temporary HP:</h4>
+                <h4 className="input-label">Gain Temporary HP:</h4>
                 <label>
                     <input 
                         className={dynamicStyle("input-number")}
