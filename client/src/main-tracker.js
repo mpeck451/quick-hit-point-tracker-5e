@@ -4,6 +4,7 @@ export function MainTracker({
         inputObjects,
         setInputObjects,
         isHistoryHidden,
+        isHpBarHidden,
         toggleHistory, 
         dynamicStyle,
         clearInputs
@@ -25,6 +26,10 @@ export function MainTracker({
     const historyVisibility = {
         display: isHistoryHidden ? "none" : "inline"
       };
+
+    const hpBarVisibility = {
+        display: isHpBarHidden ? 'none' : null
+    }
 
     const handleInput = (event, type) => {
         if(!isNaN(event.target.value)) {
@@ -131,7 +136,7 @@ export function MainTracker({
                 <h2>{playerProfile.characterName}</h2>
                 <h3>Hit Points: {hp}/{maxHp}</h3>
                 {tempHp !== 0 && (<p>Temporary Hit Points: {tempHp}</p>)}
-                <div id={dynamicStyle("hp-bar")}>
+                <div id={dynamicStyle("hp-bar")} style={hpBarVisibility}>
                     <div className="green-hp" style={hpRatio}></div>
                 </div>
             </div>

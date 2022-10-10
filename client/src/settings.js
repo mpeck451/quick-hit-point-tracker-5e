@@ -5,7 +5,9 @@ export function Settings({
     isDarkMode,
     toggleDarkMode,
     clearInputs,
-    handleNewCharacter
+    handleNewCharacter,
+    isHpBarHidden,
+    toggleHpBar
     }) 
     {
 
@@ -40,6 +42,15 @@ export function Settings({
                         type="checkbox" 
                         checked={isDarkMode} 
                         onClick={toggleDarkMode}
+                        />
+                    <span className="slider round"></span>
+                </label>
+                <h4>Hit Point Bar:</h4>
+                <label className="switch">
+                    <input 
+                        type="checkbox" 
+                        checked={!isHpBarHidden} 
+                        onClick={toggleHpBar}
                         />
                     <span className="slider round"></span>
                 </label>
