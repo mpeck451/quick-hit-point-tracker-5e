@@ -28,7 +28,10 @@ export function MainTracker({
       };
 
     const hpBarVisibility = {
-        display: isHpBarHidden ? 'none' : null
+        display: isHpBarHidden ? 'none' : null,
+        width: "46%",
+        border: tempHp && `5px solid blue`,
+        'border-radius': '20px'
     }
 
     const handleInput = (event, type) => {
@@ -136,8 +139,10 @@ export function MainTracker({
                 <h2>{playerProfile.characterName}</h2>
                 <h3>Hit Points: {hp}/{maxHp}</h3>
                 {tempHp !== 0 && (<p>Temporary Hit Points: {tempHp}</p>)}
-                <div id={dynamicStyle("hp-bar")} style={hpBarVisibility}>
-                    <div className="green-hp" style={hpRatio}></div>
+                <div style={hpBarVisibility}>
+                    <div id={dynamicStyle("hp-bar")}>
+                        <div className='green-hp' style={hpRatio}></div>
+                    </div>
                 </div>
             </div>
             <br />
