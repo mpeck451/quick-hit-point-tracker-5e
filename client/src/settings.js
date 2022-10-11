@@ -7,7 +7,8 @@ export function Settings({
     clearInputs,
     handleNewCharacter,
     isHpBarHidden,
-    toggleHpBar
+    toggleHpBar,
+    toggleSettings
     }) 
     {
 
@@ -54,6 +55,7 @@ export function Settings({
                         />
                     <span className="slider round"></span>
                 </label>
+            
             <h3>Character</h3>
                 <button
                     className={dynamicStyle("button")}
@@ -66,6 +68,10 @@ export function Settings({
                 <button
                     className={dynamicStyle("button")}
                     onClick={handleNewCharacter}>New Character</button>
+                <br />    
+            <button
+                className={dynamicStyle("button")}
+                onClick={toggleSettings}>Back</button>
         </div>
     );
 }

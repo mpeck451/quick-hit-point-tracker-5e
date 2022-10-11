@@ -136,6 +136,7 @@ function App() {
           isHpBarHidden={isHpBarHidden}
           toggleHpBar={toggleHpBar}
           handleNewCharacter={handleNewCharacter}
+          toggleSettings={toggleSettings}
         />
       }
     </div>
