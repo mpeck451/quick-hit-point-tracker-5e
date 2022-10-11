@@ -44,6 +44,7 @@ export function NewUser({
                 <label>Character Name:
                     <br />
                     <input 
+                        id="character-name"
                         className={dynamicStyle("input-text")}
                         type="text"
                         onChange={(event) => handleChange(event, "characterName")}></input>
