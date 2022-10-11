@@ -37,6 +37,12 @@ input[type=number] {
     align-items: center;
 }
 
+#new-character-inputs {
+    display: grid;
+    grid-template-columns: 40% 60%;
+    align-items: center;
+}
+
 .green-hp {
     height: 100%;
     background-color: green;
