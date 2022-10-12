@@ -30,7 +30,7 @@ export function DeathSavingThrowsTracker({
         setPlayerProfile((prev) => ({
             ...prev,
             isStabilized: true,
-        }))
+        }));
     }
 
     return (

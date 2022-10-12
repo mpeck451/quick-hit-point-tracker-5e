@@ -111,18 +111,18 @@ export function MainTracker({
                         ...prev,
                         isStabilized: false,
                     }))
-                    return false    
-                } else return true
+                    return false; 
+                } else return true;
             }
             case 'heal': {
                 if (hp === maxHp || healInput === 0) {
-                    return false
-                }  else return true
+                    return false;
+                }  else return true;
             }
             case 'temp': {
-                return true
+                return true;
             }
-            default: alert("Error: checkForValidInput type invalid.")
+            default: alert("Error: checkForValidInput type invalid.");
         }
     }
 
@@ -188,7 +188,7 @@ export function MainTracker({
                         onChange={(event) => handleInput(event, 'temp')} 
                         onKeyPress={(event) => handleEnterPress(event, 'temp', tempInput)}></input>
                 </label>
-                <button 
+                <button
                         className={dynamicStyle("button")}
                         onClick={(event) => handleEnterPress(event, 'temp', tempInput)}>Enter</button>
             </div>

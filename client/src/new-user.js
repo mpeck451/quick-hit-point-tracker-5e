@@ -7,7 +7,7 @@ export function NewUser({
     {
 
     const maxHp = Number(playerProfile.characterMaxHitPoints);
-    const currentHp = Number(playerProfile.characterCurrentHitPoints)
+    const currentHp = Number(playerProfile.characterCurrentHitPoints);
 
     const handleChange = (event, field) => {
         if (field === "characterMaxHitPoints" && currentHp >= maxHp) {

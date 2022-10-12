@@ -18,7 +18,7 @@ export function Settings({
         clearInputs();
         if (playerProfile.hitPointHistory[lastElementIndex] === resetHistoryElement) {
             alert("ERROR: Hit Points are already reset to max value.");
-            return null
+            return null;
         } else setPlayerProfile((prev) => ({
             ...prev,
             characterCurrentHitPoints: playerProfile.characterMaxHitPoints,

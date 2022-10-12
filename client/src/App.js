@@ -18,7 +18,8 @@ function App() {
     deathSavingThrowSuccess: 0,
     deathSavingThrowFailure: 0,
     isStabilized: true
-  })
+  });
+
   const toggleNewUser = (desiredBoolean) => {
     if (!desiredBoolean) {
       setPlayerProfile((prev) => ({
