@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+
 export function DeathSavingThrowsTracker({
         playerProfile,
         setPlayerProfile,
@@ -29,9 +31,16 @@ export function DeathSavingThrowsTracker({
     const stabilize = () => {
         setPlayerProfile((prev) => ({
             ...prev,
+            deathSavingThrowFailure: 0,
+            deathSavingThrowSuccess: 0,
             isStabilized: true,
         }));
     }
+
+    useEffect(() => {
+        if (playerProfile.deathSavingThrowFailure === 3) {alert('YOU DIED')}
+        if (playerProfile.deathSavingThrowSuccess === 3) {stabilize()}
+    })
 
     return (
         <div>
