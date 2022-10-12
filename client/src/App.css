@@ -1,6 +1,6 @@
 :root {
     --hover-color: #5072A7;
-    --button-color-default: #8aa2ba;
+    --button-color-default: gray;
     --dark-input-background-color: black;
     --border-radius-px: 6px;
 }
