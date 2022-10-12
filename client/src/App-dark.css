@@ -1,5 +1,9 @@
 .dark-mode {
-    background-color: black;
+    background: #3B3B3B url(../public/dice-on-table.JPG);
+    background-size: 2025px 1350px;
+    background-repeat: no-repeat;
+    background-position: center center center center;
+    background-blend-mode: multiply;
     color: white;
 }
 
