@@ -63,8 +63,8 @@ export function MainTracker({
                     newHp = hp + damageDifference <= 0 ? 0 : hp + damageDifference;
                     newHistoryItem = `Temporary hit points reduced to 0. ${Math.abs(damageDifference)} hit ${handlePluralPoints(Math.abs(damageDifference))} lost.`
                 } else {
-                    newTempHp = damageDifference
-                    newHistoryItem = `${points} temporary hit ${handlePluralPoints(points)} lost.`
+                    newTempHp = damageDifference;
+                    newHistoryItem = `${points} temporary hit ${handlePluralPoints(points)} lost.`;
                 }
             } else {
                 newHp = hp - points <= 0 ? 0 : hp - points;
@@ -107,6 +107,10 @@ export function MainTracker({
         switch(type) {
             case 'damage': {
                 if (hp === 0 || damageInput === 0) {
+                    setPlayerProfile((prev) => ({
+                        ...prev,
+                        isStabilized: false,
+                    }))
                     return false    
                 } else return true
             }
