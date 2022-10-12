@@ -1,8 +1,13 @@
 :root {
     --hover-color: #5072A7;
-    --button-color-default: gray;
+    --button-color-default: #dfdfdf;
     --dark-input-background-color: black;
     --border-radius-px: 6px;
+}
+
+button {
+    margin: 4px;
+    box-shadow: 1px 1px 3px black;
 }
 
 button:hover {
@@ -13,6 +18,7 @@ button:hover {
 input {
     height: 25px;
     width: 35px;
+    box-shadow: 1px 1px 3px black;
 }
 
 /* Chrome, Safari, Edge, Opera */

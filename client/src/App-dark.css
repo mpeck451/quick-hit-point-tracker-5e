@@ -31,6 +31,7 @@
 
 .hit-point-box-dark {
     background-color: #222222;
+    box-shadow: 3px 3px 10px black;
     max-width: 500px;
     min-width: 500px;
     margin: auto;
