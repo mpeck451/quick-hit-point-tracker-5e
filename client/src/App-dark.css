@@ -10,21 +10,21 @@
 .input-number-dark {
     text-align: center;
     border: solid white 1px;
-    border-radius: 5px;
+    border-radius: var(--border-radius-px);
     color: white;
     background-color: var(--dark-input-background-color);
 }
 
 .input-text-dark {
     border: solid white 1px;
-    border-radius: 5px;
+    border-radius: var(--border-radius-px);
     color: white;
     background-color: var(--dark-input-background-color);
 }
 
 .button-dark {
-    border: solid white 1px;
-    border-radius: 5px;
+    border: 0px;
+    border-radius: var(--border-radius-px);
     color: white;
     background-color: var(--dark-input-background-color);
 }
@@ -35,8 +35,7 @@
     min-width: 500px;
     margin: auto;
     margin-top: 20px;
-    border: solid white 3px;
-    border-radius: 5px;
+    border-radius: var(--border-radius-px);
     padding: 20px;
 }
 

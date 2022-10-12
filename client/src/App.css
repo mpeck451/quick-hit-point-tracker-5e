@@ -1,7 +1,8 @@
 :root {
     --hover-color: #5072A7;
-    --button-color-default: #cfcfcf;
-    --dark-input-background-color: #29465B;
+    --button-color-default: #24a0ed;
+    --dark-input-background-color: black;
+    --border-radius-px: 6px;
 }
 
 button:hover {
@@ -47,7 +48,7 @@ input[type=number] {
     height: 100%;
     background-color: green;
     border: 0px solid black;
-    border-radius: 10px;
+    border-radius: var(--border-radius-px);
 }
 
 .glyphicon-ok {

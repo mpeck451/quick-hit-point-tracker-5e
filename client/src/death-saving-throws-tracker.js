@@ -54,6 +54,9 @@ export function DeathSavingThrowsTracker({
                     onClick={() => handleStatusChange('Failure', 'subtract')}><span className="glyphicon glyphicon-minus"></span></button>
             <br />
             <button
+                className={dynamicStyle('button')}>Stabilize</button>
+            <br />
+            <button
                 className={dynamicStyle('button')}
                 onClick={handleNewCharacter}>New Character</button>
         </div>
