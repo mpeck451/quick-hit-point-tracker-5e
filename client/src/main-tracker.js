@@ -68,7 +68,7 @@ export function MainTracker({
                 }
             } else {
                 newHp = hp - points <= 0 ? 0 : hp - points;
-                newHistoryItem = hp - points <= 0 ? "Hit points reduced to 0." : `${points} hit ${handlePluralPoints(points)} lost.`
+                newHistoryItem = hp - points <= 0 ? "Hit points reduced to 0." : `${points} hit ${handlePluralPoints(points)} lost.`;
             }
         }
 
@@ -98,7 +98,8 @@ export function MainTracker({
             ...prev,
             characterCurrentHitPoints: newHp,
             temporaryHitPoints: newTempHp,
-            hitPointHistory: [...playerProfile.hitPointHistory, newHistoryItem]
+            hitPointHistory: [...playerProfile.hitPointHistory, newHistoryItem],
+            isStabilized: newHp === 0 ? false : true,
         }));
     }
 

@@ -16,7 +16,8 @@ function App() {
     characterCurrentHitPoints: 0,
     hitPointHistory: [],
     deathSavingThrowSuccess: 0,
-    deathSavingThrowFailure: 0
+    deathSavingThrowFailure: 0,
+    isStabilized: true
   })
   const toggleNewUser = (desiredBoolean) => {
     if (!desiredBoolean) {
@@ -30,8 +31,15 @@ function App() {
       characterMaxHitPoints: null,
       characterCurrentHitPoints: null,
       hitPointHistory: [],
-      isNewUser: true
+      isNewUser: true,
+      isStabilized: true,
     }));
+  }
+
+  const handleNewCharacter = () => {
+    clearInputs();
+    toggleNewUser(true);
+    setIsSettings(false);
   }
 
   const [isSettings, setIsSettings] = useState(false);
@@ -76,12 +84,6 @@ function App() {
         deathSavingThrowSuccess: 0
     });
   } 
-
-  const handleNewCharacter = () => {
-    clearInputs();
-    toggleNewUser(true);
-    setIsSettings(false);
-  }
   
   return (
     <div 
@@ -100,7 +102,7 @@ function App() {
           dynamicStyle={dynamicStyle}
         />
       } 
-      {(!playerProfile.isNewUser && playerProfile.characterCurrentHitPoints > 0 && !isSettings) && 
+      {(!playerProfile.isNewUser && playerProfile.isStabilized && !isSettings) && 
         <MainTracker 
           playerProfile={playerProfile}
           setPlayerProfile={setPlayerProfile}
@@ -115,7 +117,7 @@ function App() {
           handleNewCharacter={handleNewCharacter}
         />
       }
-      {(!playerProfile.isNewUser && playerProfile.characterCurrentHitPoints <= 0 && !isSettings) &&
+      {(!playerProfile.isNewUser && !playerProfile.isStabilized && !isSettings) &&
         <DeathSavingThrowsTracker 
           playerProfile={playerProfile}
           setPlayerProfile={setPlayerProfile}

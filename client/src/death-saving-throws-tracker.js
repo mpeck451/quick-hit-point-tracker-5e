@@ -26,6 +26,13 @@ export function DeathSavingThrowsTracker({
         }
     }
 
+    const stabilize = () => {
+        setPlayerProfile((prev) => ({
+            ...prev,
+            isStabilized: true,
+        }))
+    }
+
     return (
         <div>
             <h2>Death Saving Throws</h2>
@@ -54,7 +61,8 @@ export function DeathSavingThrowsTracker({
                     onClick={() => handleStatusChange('Failure', 'subtract')}><span className="glyphicon glyphicon-minus"></span></button>
             <br />
             <button
-                className={dynamicStyle('button')}>Stabilize</button>
+                className={dynamicStyle('button')}
+                onClick={stabilize}>Stabilize</button>
             <br />
             <button
                 className={dynamicStyle('button')}
