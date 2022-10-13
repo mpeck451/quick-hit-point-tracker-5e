@@ -14,7 +14,7 @@ export function MainTracker({
     const maxHp = Number(playerProfile.characterMaxHitPoints);
     const hpRatio = { width: `${(hp/maxHp)*100}%`};
     const tempHp = Number(playerProfile.temporaryHitPoints);
-    const tempHpLength = {width: `${maxHp/tempHp * 200}px`}
+    const tempHpLength = {width: `${tempHp*10}px`}
     const damageInput = Number(inputObjects.damageInput);
     const healInput = Number(inputObjects.healInput);
     const tempInput = Number(inputObjects.tempInput);
@@ -25,7 +25,7 @@ export function MainTracker({
 
     const historyVisibility = {
         display: isHistoryHidden ? "none" : "inline"
-      };
+    }
 
     const hpBarVisibility = {
         display: isHpBarHidden ? 'none' : null,
