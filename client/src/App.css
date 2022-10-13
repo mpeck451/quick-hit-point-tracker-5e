@@ -68,7 +68,6 @@ input[type=number] {
 .input-label {
     text-align: left;
 }
-
 .settings {
     font-size: 20px;
     height: 30px;
@@ -76,4 +75,10 @@ input[type=number] {
     margin-top: -12px;
     margin-left: 27px;
     padding: 2px;
+}
+
+.temp-hp {
+    height: 10px;
+    background-color: blue;
+    margin-bottom: 5px;
 }
