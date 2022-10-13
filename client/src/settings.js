@@ -23,7 +23,8 @@ export function Settings({
             ...prev,
             characterCurrentHitPoints: playerProfile.characterMaxHitPoints,
             temporaryHitPoints: 0,
-            hitPointHistory: [...playerProfile.hitPointHistory, resetHistoryElement]
+            hitPointHistory: [...playerProfile.hitPointHistory, resetHistoryElement],
+            isStabilized: true,
         }));
         alert("Hit Points reset!");
     }
