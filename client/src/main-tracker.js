@@ -14,7 +14,8 @@ export function MainTracker({
     const maxHp = Number(playerProfile.characterMaxHitPoints);
     const hpRatio = { width: `${(hp/maxHp)*100}%`};
     const tempHp = Number(playerProfile.temporaryHitPoints);
-    const tempHpLength = {width: `${tempHp*10}px`}
+    const tempHpMax = Number(playerProfile.temporaryHitPointMax);
+    const tempHpLength = {width: `${(tempHp/tempHpMax)*100}%`}
     const damageInput = Number(inputObjects.damageInput);
     const healInput = Number(inputObjects.healInput);
     const tempInput = Number(inputObjects.tempInput);
@@ -47,6 +48,7 @@ export function MainTracker({
         points = Number(points);
         let newHp = hp;
         let newTempHp = tempHp;
+        let newTempMax = tempHpMax;
         let newHistoryItem;
 
         const handlePluralPoints = (pointValue) => {
@@ -77,6 +79,7 @@ export function MainTracker({
 
         const calculateTemp = () => {
             newTempHp = tempHp + points;
+            newTempMax = tempHp + points;
             newHistoryItem = `${points} temporary hit ${handlePluralPoints(points)} gained.`;
         }
 
@@ -96,6 +99,7 @@ export function MainTracker({
             ...prev,
             characterCurrentHitPoints: newHp,
             temporaryHitPoints: newTempHp,
+            temporaryHitPointMax: newTempMax,
             hitPointHistory: [...playerProfile.hitPointHistory, newHistoryItem],
             isStabilized: newHp === 0  ? false : true,
         }));
@@ -107,7 +111,7 @@ export function MainTracker({
                 if (hp === 0 || damageInput === 0) {
                     setPlayerProfile((prev) => ({
                         ...prev,
-                    }))
+                    }));
                     return false; 
                 } else return true;
             }

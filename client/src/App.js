@@ -12,6 +12,7 @@ function App() {
   const [playerProfile, setPlayerProfile] = useState({
     isNewUser: true,
     temporaryHitPoints: 0,
+    temporaryHitPointMax: 0,
     characterMaxHitPoints: 0,
     characterCurrentHitPoints: 0,
     hitPointHistory: [],
