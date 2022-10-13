@@ -19,8 +19,9 @@ export function MainTracker({
     const damageInput = Number(inputObjects.damageInput);
     const healInput = Number(inputObjects.healInput);
     const tempInput = Number(inputObjects.tempInput);
+
     const history = playerProfile.hitPointHistory.map((item) =>
-        <li id={item}>{item}</li>
+            <li id={item}>{item}</li>
     );
 
     const historyVisibility = {
@@ -99,7 +100,7 @@ export function MainTracker({
             characterCurrentHitPoints: newHp,
             temporaryHitPoints: newTempHp,
             hitPointHistory: [...playerProfile.hitPointHistory, newHistoryItem],
-            isStabilized: newHp === 0 ? false : true,
+            isStabilized: newHp === 0  ? false : true,
         }));
     }
 
@@ -109,7 +110,6 @@ export function MainTracker({
                 if (hp === 0 || damageInput === 0) {
                     setPlayerProfile((prev) => ({
                         ...prev,
-                        isStabilized: false,
                     }))
                     return false; 
                 } else return true;
@@ -127,6 +127,13 @@ export function MainTracker({
     }
 
     const handleEnterPress = (event, type, input) => {
+        if (damageInput > 0 && hp === 0) {
+            setPlayerProfile((prev) => ({
+                ...prev,
+                hitPointHistory: [...playerProfile.hitPointHistory, `${damageInput} damage taken at 0 hit points.`], 
+                isStabilized: false
+            }));
+        }
         const isValidInput = checkForValidInput(type)
         if (event.key !== "Enter" && event.type !== "click") {
             return null;
@@ -201,7 +208,9 @@ export function MainTracker({
                         <span className="glyphicon glyphicon-eye-close"></span>}</button>
                     <div
                         style={historyVisibility}>
-                    {playerProfile.hitPointHistory.length > 0 ? history: (<li>None</li>)}
+                        {playerProfile.hitPointHistory.length > 0 ? history : (
+                            <li>None</li>
+                        )}
                     </div>
             </ul>
             <br />

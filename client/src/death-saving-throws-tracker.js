@@ -31,6 +31,7 @@ export function DeathSavingThrowsTracker({
     const stabilize = () => {
         setPlayerProfile((prev) => ({
             ...prev,
+            hitPointHistory: [...playerProfile.hitPointHistory, "Stabilized"],
             deathSavingThrowFailure: 0,
             deathSavingThrowSuccess: 0,
             isStabilized: true,

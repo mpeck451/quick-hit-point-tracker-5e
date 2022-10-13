@@ -80,9 +80,7 @@ function App() {
     setInputObjects({
         damageInput: 0,
         healInput: 0,
-        tempInput: 0,
-        deathSavingThrowFailure: 0,
-        deathSavingThrowSuccess: 0
+        tempInput: 0
     });
   } 
   
