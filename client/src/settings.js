@@ -11,6 +11,10 @@ export function Settings({
     toggleSettings
     }) 
     {
+    //Style Objects
+    const characterSettingsVisibility = {
+        display: playerProfile.isNewUser ? 'none' : 'inline'
+    }
 
     //Functions
     const resetHitPoints = () => {
@@ -59,19 +63,21 @@ export function Settings({
                     <span className="slider round"></span>
                 </label>
             
-            <h3>Character</h3>
-                <button
-                    className={dynamicStyle("button")}
-                    onClick={resetHitPoints}>Reset Hit Points</button>
-                <br />    
-                <button
-                    className={dynamicStyle("button")}
-                    onClick={clearHistory}>Clear History</button>
-                <br />
-                <button
-                    className={dynamicStyle("button")}
-                    onClick={handleNewCharacter}>New Character</button>
-                <br />    
+            <div style={characterSettingsVisibility}>
+                <h3>Character</h3>
+                    <button
+                        className={dynamicStyle("button")}
+                        onClick={resetHitPoints}>Reset Hit Points</button>
+                    <br />    
+                    <button
+                        className={dynamicStyle("button")}
+                        onClick={clearHistory}>Clear History</button>
+                    <br />
+                    <button
+                        className={dynamicStyle("button")}
+                        onClick={handleNewCharacter}>New Character</button>
+                    <br />    
+            </div>
             <button
                 id="settings-back-button"
                 className={dynamicStyle("button")}
