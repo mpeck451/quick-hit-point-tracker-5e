@@ -10,33 +10,24 @@ export function MainTracker({
         clearInputs
     })
     {
+    //Constants
     const hp = Number(playerProfile.characterCurrentHitPoints);
     const maxHp = Number(playerProfile.characterMaxHitPoints);
-    const hpRatio = { width: `${(hp/maxHp)*100}%`};
     const tempHp = Number(playerProfile.temporaryHitPoints);
     const tempHpMax = Number(playerProfile.temporaryHitPointMax);
-    const tempHpLength = {width: `${(tempHpMax ? tempHp/tempHpMax : 0)*94}%`}
     const damageInput = Number(inputObjects.damageInput);
     const healInput = Number(inputObjects.healInput);
     const tempInput = Number(inputObjects.tempInput);
 
-    const history = playerProfile.hitPointHistory.map((item) =>
-            <li id={item}>{item}</li>
-    );
+    //Style Objects
+    const history = playerProfile.hitPointHistory.map((item) => <li id={item}>{item}</li>);
+    const historyVisibility = { display: isHistoryHidden ? "none" : "inline" }
+    const hpBarVisibility = { display: isHpBarHidden ? 'none' : null, width: "46%", }
+    const hpRatio = { width: `${(hp/maxHp)*100}%`};
+    const tempHpBarVisibility = { display: tempHp === 0 ? 'none' : 'inline' }
+    const tempHpRatio = {width: `${(tempHpMax ? tempHp/tempHpMax : 0)*94}%`}
 
-    const historyVisibility = {
-        display: isHistoryHidden ? "none" : "inline"
-    }
-
-    const tempHpBarVisibility = {
-        display: tempHp === 0 ? 'none' : 'inline'
-    }
-
-    const hpBarVisibility = {
-        display: isHpBarHidden ? 'none' : null,
-        width: "46%",
-    }
-
+    //Functions
     const handleInput = (event, type) => {
         if(!isNaN(event.target.value)) {
             const inputKey = type + 'Input';
@@ -154,7 +145,7 @@ export function MainTracker({
                 </div>
                 <div id="hp-bar-wrapper" style={hpBarVisibility}>
                     <div style={tempHpBarVisibility}>
-                        <div className='temp-hp' style={tempHpLength}></div>
+                        <div className='temp-hp' style={tempHpRatio}></div>
                     </div>
                     <div id={dynamicStyle("hp-bar")}>
                         <div className='green-hp' style={hpRatio}></div>
