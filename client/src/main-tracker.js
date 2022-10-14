@@ -34,7 +34,7 @@ export function MainTracker({
 
     const hpBarVisibility = {
         display: isHpBarHidden ? 'none' : null,
-        width: "46%"
+        width: "46%",
     }
 
     const handleInput = (event, type) => {
@@ -54,11 +54,9 @@ export function MainTracker({
         let newTempHp = tempHp;
         let newTempMax = tempHpMax;
         let newHistoryItem;
-
         const handlePluralPoints = (pointValue) => {
             return pointValue !== 1 ? "points" : "point";
         }
-
         const calculateDamage = () => {
             if (tempHp > 0) {
                 const damageDifference = tempHp - points;
@@ -75,18 +73,15 @@ export function MainTracker({
                 newHistoryItem = hp - points <= 0 ? "Hit points reduced to 0." : `${points} hit ${handlePluralPoints(points)} lost.`;
             }
         }
-
         const calculateHeal = () => {
             newHp = hp + points >= maxHp ? maxHp : hp + points;
             newHistoryItem = hp + points >= maxHp ? "Hit points restored to maximum value." : `${points} hit ${handlePluralPoints(points)} restored. `;
         }
-
         const calculateTemp = () => {
             newTempHp = tempHp + points;
             newTempMax = tempHp + points;
             newHistoryItem = `${points} temporary hit ${handlePluralPoints(points)} gained.`;
         }
-
         switch(type) {
             case 'damage': 
                 calculateDamage();
@@ -108,7 +103,6 @@ export function MainTracker({
             isStabilized: newHp === 0  ? false : true,
         }));
     }
-
     const checkForValidInput = (type) => {
         switch(type) {
             case 'damage': {
@@ -152,11 +146,13 @@ export function MainTracker({
 
     return (
         <div id="main-tracker">
+            <h2>{playerProfile.characterName}</h2>
             <div id="hp-interface">
-                <h2>{playerProfile.characterName}</h2>
-                <h3>Hit Points: {hp}/{maxHp}</h3>
-                {tempHp !== 0 && (<p>Temporary Hit Points: {tempHp}</p>)}
-                <div style={hpBarVisibility}>
+                <div id="hp-stats-wrapper">
+                    <h3>Hit Points: {hp}/{maxHp}</h3>
+                    {tempHp !== 0 && (<p>Temporary Hit Points: {tempHp}</p>)}
+                </div>
+                <div id="hp-bar-wrapper" style={hpBarVisibility}>
                     <div style={tempHpBarVisibility}>
                         <div className='temp-hp' style={tempHpLength}></div>
                     </div>
