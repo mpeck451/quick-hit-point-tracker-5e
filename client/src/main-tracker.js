@@ -15,7 +15,7 @@ export function MainTracker({
     const hpRatio = { width: `${(hp/maxHp)*100}%`};
     const tempHp = Number(playerProfile.temporaryHitPoints);
     const tempHpMax = Number(playerProfile.temporaryHitPointMax);
-    const tempHpLength = {width: `${(tempHp/tempHpMax)*100}%`}
+    const tempHpLength = {width: `${(tempHpMax ? tempHp/tempHpMax : 0)*94}%`}
     const damageInput = Number(inputObjects.damageInput);
     const healInput = Number(inputObjects.healInput);
     const tempInput = Number(inputObjects.tempInput);
@@ -26,6 +26,10 @@ export function MainTracker({
 
     const historyVisibility = {
         display: isHistoryHidden ? "none" : "inline"
+    }
+
+    const tempHpBarVisibility = {
+        display: tempHp === 0 ? 'none' : 'inline'
     }
 
     const hpBarVisibility = {
@@ -153,7 +157,7 @@ export function MainTracker({
                 <h3>Hit Points: {hp}/{maxHp}</h3>
                 {tempHp !== 0 && (<p>Temporary Hit Points: {tempHp}</p>)}
                 <div style={hpBarVisibility}>
-                    <div>
+                    <div style={tempHpBarVisibility}>
                         <div className='temp-hp' style={tempHpLength}></div>
                     </div>
                     <div id={dynamicStyle("hp-bar")}>
