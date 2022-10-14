@@ -94,6 +94,7 @@ export function MainTracker({
             isStabilized: newHp === 0  ? false : true,
         }));
     }
+
     const checkForValidInput = (type) => {
         switch(type) {
             case 'damage': {
@@ -135,6 +136,7 @@ export function MainTracker({
         clearInputs();
     }
 
+    //JSX
     return (
         <div id="main-tracker">
             <h2>{playerProfile.characterName}</h2>

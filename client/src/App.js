@@ -9,6 +9,7 @@ import { DeathSavingThrowsTracker } from './death-saving-throws-tracker';
 import { Settings } from './settings'
 
 function App() {
+  //State
   const [playerProfile, setPlayerProfile] = useState({
     isNewUser: true,
     temporaryHitPoints: 0,
@@ -21,6 +22,23 @@ function App() {
     isStabilized: true
   });
 
+  const [inputObjects, setInputObjects] = useState({
+    damageInput: Number(),
+    healInput: Number(),
+    tempInput: Number()
+  });
+
+  const [isHistoryHidden, setIsHistoryHidden] = useState(true);
+  const [isHpBarHidden, setIsHpBarHidden] = useState(false);
+  const [isSettings, setIsSettings] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  //Style Objects
+  const historyVisibility = {
+    display: isHistoryHidden ? 'none' : 'inline'
+  };
+
+  //Functions
   const toggleNewUser = (desiredBoolean) => {
     if (!desiredBoolean) {
       setPlayerProfile((prev) => ({
@@ -44,38 +62,13 @@ function App() {
     setIsSettings(false);
   }
 
-  const [isSettings, setIsSettings] = useState(false);
   const toggleSettings = () => {
     setIsSettings((prev) => !prev);
   }
 
-  const [inputObjects, setInputObjects] = useState({
-    damageInput: Number(),
-    healInput: Number(),
-    tempInput: Number()
-  });
-
-  const [isHistoryHidden, setIsHistoryHidden] = useState(true);
   const toggleHistory = () => setIsHistoryHidden((prev) => !prev);
-  const historyVisibility = {
-    display: isHistoryHidden ? 'none' : 'inline'
-  };
 
-  const [isHpBarHidden, setIsHpBarHidden] = useState(false);
   const toggleHpBar = () => setIsHpBarHidden((prev) => !prev);
-  
-  //Dark mode programming.
-  const [isDarkMode, setIsDarkMode] = useState(false);
-  const dynamicStyle = (className) => {
-    return isDarkMode ? className + "-dark" : className;
-  }
-  const toggleDarkMode = () => setIsDarkMode((prev) => !prev);
-  useEffect(() => {
-    document.body.classList.add(`${isDarkMode ? 'dark-mode' : 'default-mode'}`);
-    return () => {
-      document.body.classList.remove(`${isDarkMode ? 'dark-mode' : 'default-mode'}`);
-    }
-  }, [isDarkMode]);
 
   function clearInputs() {
     setInputObjects({
@@ -85,6 +78,20 @@ function App() {
     });
   } 
   
+  const dynamicStyle = (className) => {
+    return isDarkMode ? className + "-dark" : className;
+  }
+  const toggleDarkMode = () => setIsDarkMode((prev) => !prev);
+
+  //Secondary Effects
+  useEffect(() => {
+    document.body.classList.add(`${isDarkMode ? 'dark-mode' : 'default-mode'}`);
+    return () => {
+      document.body.classList.remove(`${isDarkMode ? 'dark-mode' : 'default-mode'}`);
+    }
+  }, [isDarkMode]);
+
+  //JSX
   return (
     <div 
       className={dynamicStyle('hit-point-box')}>

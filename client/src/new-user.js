@@ -5,10 +5,12 @@ export function NewUser({
         dynamicStyle
     }) 
     {
-
+    
+    //Constants
     const maxHp = Number(playerProfile.characterMaxHitPoints);
     const currentHp = Number(playerProfile.characterCurrentHitPoints);
 
+    //Functions
     const handleChange = (event, field) => {
         if (field === "characterMaxHitPoints" && currentHp >= maxHp) {
             setPlayerProfile((prev) => ({
@@ -28,6 +30,7 @@ export function NewUser({
         } else alert("Max Hit Points must be greater than 0.")
     }
 
+    //JSX
     return (
         <div>
             <h2>New Character</h2>

@@ -8,9 +8,11 @@ export function DeathSavingThrowsTracker({
     })
     {
 
+    //Constants
     const successes = Number(playerProfile.deathSavingThrowSuccess);
     const failures = Number(playerProfile.deathSavingThrowFailure);
 
+    //Functions
     const handleStatusChange = (type, operator) => {
         type = 'deathSavingThrow' + type;
         setPlayerProfile((prev) => ({
@@ -38,11 +40,13 @@ export function DeathSavingThrowsTracker({
         }));
     }
 
+    //Secondary Effects
     useEffect(() => {
         if (playerProfile.deathSavingThrowFailure === 3) {alert('YOU DIED')}
         if (playerProfile.deathSavingThrowSuccess === 3) {stabilize()}
     })
 
+    //JSX
     return (
         <div>
             <h2>Death Saving Throws</h2>

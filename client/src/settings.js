@@ -12,6 +12,7 @@ export function Settings({
     }) 
     {
 
+    //Functions
     const resetHitPoints = () => {
         const resetHistoryElement = "Hit points reset.";
         const lastElementIndex = playerProfile.hitPointHistory.length - 1;
@@ -34,6 +35,7 @@ export function Settings({
         alert("History cleared!");
     }
 
+    //JSX
     return ( 
         <div>
             <h2>Settings</h2>
