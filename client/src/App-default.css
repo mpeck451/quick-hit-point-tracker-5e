@@ -2,7 +2,9 @@
     background-image: url(../public/dice-on-table.JPG);
     background-size: 2025px 1350px;
     background-repeat: no-repeat;
-    background-position: center center center center;
+    background-position: center top;
+    background-attachment: fixed;
+    background-color:  #3B3B3B;
     color: black;
 }
 
