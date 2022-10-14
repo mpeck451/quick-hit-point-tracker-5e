@@ -23,7 +23,7 @@ export function MainTracker({
     const history = playerProfile.hitPointHistory.map((item) => <li id={item}>{item}</li>);
     const historyVisibility = { display: isHistoryHidden ? "none" : "inline" }
     const hpBarVisibility = { display: isHpBarHidden ? 'none' : null, width: "46%", }
-    const hpRatio = { width: `${(hp/maxHp)*100}%`};
+    const hpRatio = { width: `${(hp/maxHp)*100}%`}
     const tempHpBarVisibility = { display: tempHp === 0 ? 'none' : 'inline' }
     const tempHpRatio = {width: `${(tempHpMax ? tempHp/tempHpMax : 0)*94}%`}
 
@@ -111,7 +111,9 @@ export function MainTracker({
                 }  else return true;
             }
             case 'temp': {
-                return true;
+                if (hp === 0) {
+                    return false;
+                } else return true;
             }
             default: alert("Error: checkForValidInput type invalid.");
         }
