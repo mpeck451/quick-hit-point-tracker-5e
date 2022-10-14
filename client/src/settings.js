@@ -73,6 +73,7 @@ export function Settings({
                     onClick={handleNewCharacter}>New Character</button>
                 <br />    
             <button
+                id="settings-back-button"
                 className={dynamicStyle("button")}
                 onClick={toggleSettings}>Back</button>
         </div>

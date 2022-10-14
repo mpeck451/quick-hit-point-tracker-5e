@@ -50,6 +50,10 @@ input[type=number] {
     align-items: center;
 }
 
+#settings-back-button {
+    margin-left: 400px;
+}
+
 .green-hp {
     height: 100%;
     background-color: green;
