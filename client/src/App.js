@@ -148,6 +148,11 @@ function App() {
           toggleSettings={toggleSettings}
         />
       }
+      <footer className={dynamicStyle('contact-links')}>
+        <p>Email: mpeck451@outlook.com</p>
+        <a target="blank" href="https://www.linkedin.com/in/masonlpeck" className={`fa fa-linkedin fa-lg ${dynamicStyle('link')}`}> </a>
+        <a target="blank" href="https://github.com/mpeck451" className={`fa fa-github fa-lg ${dynamicStyle('link')}`}> </a>
+      </footer>
     </div>
   );
 }
