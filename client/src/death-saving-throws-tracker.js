@@ -32,21 +32,33 @@ export function DeathSavingThrowsTracker({
         }
     }
 
-    const stabilize = () => {
+    const stabilize =() => {
         setPlayerProfile((prev) => ({
             ...prev,
             hitPointHistory: [...playerProfile.hitPointHistory, "Stabilized"],
             deathSavingThrowFailure: 0,
             deathSavingThrowSuccess: 0,
             isStabilized: true,
-        }));
+        }))
     }
 
     //Secondary Effects
     useEffect(() => {
-        if (playerProfile.deathSavingThrowFailure === 3) {alert('YOU DIED')}
-        if (playerProfile.deathSavingThrowSuccess === 3) {stabilize()}
-    })
+        if (failures === 3) {alert('YOU DIED')}
+    }, [failures]);
+
+    useEffect(() => {
+        const autoStabilize =() => {
+            setPlayerProfile((prev) => ({
+                ...prev,
+                hitPointHistory: [...playerProfile.hitPointHistory, "Stabilized"],
+                deathSavingThrowFailure: 0,
+                deathSavingThrowSuccess: 0,
+                isStabilized: true,
+            }))
+        }
+        if (successes === 3) {return () => autoStabilize()}
+    }, [successes, playerProfile.hitPointHistory, setPlayerProfile]);
 
     //JSX
     return (
