@@ -63,6 +63,9 @@ export function MainTracker({
                 newHp = hp - points <= 0 ? 0 : hp - points;
                 newHistoryItem = hp - points <= 0 ? "Hit points reduced to 0." : `${points} hit ${handlePluralPoints(points)} lost.`;
             }
+            if (newHp === 0 && (((hp+tempHp)-points)+maxHp) <= 0) {
+                newHistoryItem = "Died outright."
+            }
         }
         const calculateHeal = () => {
             newHp = hp + points >= maxHp ? maxHp : hp + points;
@@ -70,7 +73,6 @@ export function MainTracker({
         }
         const calculateTemp = () => {
             newTempHp = tempHp + points;
-            newTempMax = tempHp + points;
             newHistoryItem = `${points} temporary hit ${handlePluralPoints(points)} gained.`;
         }
         switch(type) {
@@ -91,19 +93,15 @@ export function MainTracker({
             temporaryHitPoints: newTempHp,
             temporaryHitPointMax: newTempMax,
             hitPointHistory: [...playerProfile.hitPointHistory, newHistoryItem],
-            isStabilized: newHp === 0  ? false : true,
+            isStabilized: newHp === 0 ? false : true,
+            deathSavingThrowFailure: newHp === 0 && (((hp+tempHp)-points)+maxHp) <= 0 ? 3 : 0,
         }));
     }
 
     const checkForValidInput = (type) => {
         switch(type) {
             case 'damage': {
-                if (hp === 0 || damageInput === 0) {
-                    setPlayerProfile((prev) => ({
-                        ...prev,
-                    }));
-                    return false; 
-                } else return true;
+                return true;
             }
             case 'heal': {
                 if (hp === maxHp || healInput === 0) {
@@ -120,7 +118,7 @@ export function MainTracker({
     }
 
     const handleEnterPress = (event, type, input) => {
-        if (damageInput > 0 && hp === 0) {
+        if (damageInput > 0 && hp === 0 && !(((hp-input)+maxHp) <= 0)) {
             setPlayerProfile((prev) => ({
                 ...prev,
                 hitPointHistory: [...playerProfile.hitPointHistory, `${damageInput} damage taken at 0 hit points.`], 
