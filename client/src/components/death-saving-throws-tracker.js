@@ -57,7 +57,7 @@ export function DeathSavingThrowsTracker({
                 isStabilized: true,
             }))
         }
-        if (successes === 3) {return () => autoStabilize()}
+        if (successes === 3) {return autoStabilize()}
     }, [successes, playerProfile.hitPointHistory, setPlayerProfile]);
 
     //JSX
