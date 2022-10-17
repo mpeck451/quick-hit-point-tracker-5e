@@ -1,7 +1,7 @@
-import './App.css';
-import './App-default.css';
-import './App-dark.css';
-import './switch.css';
+import './styles/App.css';
+import './styles/App-default.css';
+import './styles/App-dark.css';
+import './styles/switch.css';
 import { useState, useEffect } from 'react';
 import { NewUser } from './new-user.js';
 import { MainTracker } from './main-tracker.js'

@@ -3,7 +3,7 @@
 }
 
 .dark-mode {
-    background: #3B3B3B url(../public/dice-on-table.JPG);
+    background: #3B3B3B url(../../public/dice-on-table.JPG);
     background-size: 2025px 1350px;
     background-repeat: no-repeat;
     background-position: center top;
