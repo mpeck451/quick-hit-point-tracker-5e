@@ -3,10 +3,10 @@ import './styles/App-default.css';
 import './styles/App-dark.css';
 import './styles/switch.css';
 import { useState, useEffect } from 'react';
-import { NewUser } from './new-user.js';
-import { MainTracker } from './main-tracker.js'
-import { DeathSavingThrowsTracker } from './death-saving-throws-tracker';
-import { Settings } from './settings'
+import { NewUser } from './components/new-user.js';
+import { MainTracker } from './components/main-tracker.js'
+import { DeathSavingThrowsTracker } from './components/death-saving-throws-tracker';
+import { Settings } from './components/settings'
 
 function App() {
   //State
