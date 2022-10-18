@@ -63,6 +63,15 @@ input[type=number] {
     align-items: center;
 }
 
+#prompt-box {
+    position: absolute;
+    top: 200px;
+    width: 450px;
+    text-align: center;
+    box-shadow: 3px 3px 10px black;
+    padding: 20px;
+}
+
 #settings-back-button {
     margin-left: 400px;
 }

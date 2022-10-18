@@ -45,6 +45,12 @@
     padding: 20px;
 }
 
+.prompt-dark {
+    background-color: #222222;
+    border-radius: var(--border-radius-px);
+    text-align: center;
+}
+
 #banner-dark {
     border-bottom: solid white 3px;
     display: grid;

@@ -1,5 +1,3 @@
-
-
 .default-mode {
     background-image: url(../../public/dice-on-table.JPG);
     background-size: 2025px 1350px;
@@ -41,6 +39,12 @@
     margin-top: 20px;
     border-radius: var(--border-radius-px);
     padding: 20px;
+}
+
+.prompt {
+    background-color: white;
+    border-radius: var(--border-radius-px);
+    text-align: center;
 }
 
 #banner {

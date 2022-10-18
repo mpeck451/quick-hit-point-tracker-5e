@@ -33,6 +33,12 @@ function App() {
   const [isSettings, setIsSettings] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
 
+  const [prompt, setPrompt] = useState({
+    isPromptVisible: true,
+    promptCaption: 'Caption',
+    promptText: "This is a NEW sentence."
+  })
+
   //Style Objects
   const historyVisibility = {
     display: isHistoryHidden ? 'none' : 'inline'
@@ -69,6 +75,8 @@ function App() {
   const toggleHistory = () => setIsHistoryHidden((prev) => !prev);
 
   const toggleHpBar = () => setIsHpBarHidden((prev) => !prev);
+
+  const togglePrompt = () => setPrompt((prev) => ({...prev, isPromptVisible: !prompt.isPromptVisible}));
 
   function clearInputs() {
     setInputObjects({
@@ -148,6 +156,13 @@ function App() {
           toggleSettings={toggleSettings}
         />
       }
+      {(prompt.isPromptVisible) && <div id='prompt-box' className='prompt'>
+        <h3>{prompt.promptCaption}</h3>
+        <p>{prompt.promptText}</p>
+        <button 
+          className={dynamicStyle('button')}
+          onClick={togglePrompt}>OK</button>
+      </div>}
       <footer className={dynamicStyle('contact-links')}>
         <p>Email: mpeck451@outlook.com</p>
         <a target="blank" href="https://www.linkedin.com/in/masonlpeck" className={`fa fa-linkedin fa-lg ${dynamicStyle('link')}`}> </a>
