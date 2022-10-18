@@ -49,7 +49,7 @@ export function DeathSavingThrowsTracker({
     //Secondary Effects
     useEffect(() => {
         if (failures === 3) {promptUser("YOU DIED")}
-    }, [failures, promptUser]);
+    }, [failures]);
 
     useEffect(() => {
         const autoStabilize =() => {

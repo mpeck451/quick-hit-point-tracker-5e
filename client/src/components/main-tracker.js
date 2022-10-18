@@ -63,7 +63,7 @@ export function MainTracker({
             } else {
                 newHp = hp - points <= 0 ? 0 : hp - points;
                 newHistoryItem = hp - points <= 0 ? "Hit points reduced to 0." : `${points} hit ${handlePluralPoints(points)} lost.`;
-                hp - points <= 0 && promptUser("You Are Dying!", "Succeed on 3 death saving throws, recieve healing, or be stabilized to prevent your characters death.");
+                hp - points <= 0  && !(newHp === 0 && (((hp+tempHp)-points)+maxHp) <= 0) && promptUser("You Are Dying!", "Succeed on 3 death saving throws, recieve healing, or be stabilized to prevent your characters death.");
             }
             if (newHp === 0 && (((hp+tempHp)-points)+maxHp) <= 0) {
                 newHistoryItem = "Died outright."
