@@ -22,6 +22,7 @@ export function DeathSavingThrowsTracker({
                 playerProfile[type] + 1 : 
                 operator === 'subtract' && playerProfile[type] > 0 ? playerProfile[type] - 1 : playerProfile[type]
         }));
+        if(failures === 2 && type === "deathSavingThrowFailure" && operator === 'add') {promptUser("YOU DIED")}
     }
 
     const savingThrowStatus = (type, number) => {
@@ -45,12 +46,6 @@ export function DeathSavingThrowsTracker({
     }
 
     //Secondary Effects
-    useEffect(() => {
-        if (failures === 3) {
-            promptUser("YOU DIED");
-        }
-        //eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [failures]);
 
     useEffect(() => {
         const autoStabilize =() => {
