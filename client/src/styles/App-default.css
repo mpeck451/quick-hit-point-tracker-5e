@@ -9,6 +9,7 @@
 }
 
 .input-number {
+    margin-top: 5px;
     text-align: center;
     border: solid black 1px;
     border-radius: var(--border-radius-px);
@@ -17,6 +18,7 @@
 }
 
 .input-text {
+    margin-top: 5px;
     border: solid black 1px;
     border-radius: var(--border-radius-px);
     color: black;

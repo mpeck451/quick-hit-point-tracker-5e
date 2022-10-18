@@ -34,7 +34,7 @@ function App() {
   const [isDarkMode, setIsDarkMode] = useState(false);
 
   const [prompt, setPrompt] = useState({
-    isPromptVisible: true,
+    isPromptVisible: false,
     promptCaption: 'Caption',
     promptText: "This is a NEW sentence."
   })
@@ -66,6 +66,15 @@ function App() {
     clearInputs();
     toggleNewUser(true);
     setIsSettings(false);
+  }
+
+  const promptUser = (caption, text = "") => {
+      setPrompt((prev) => ({
+        ...prev,
+        isPromptVisible: !prompt.isPromptVisible,
+        promptCaption: caption,
+        promptText: text,
+      }))
   }
 
   const toggleSettings = () => {
@@ -115,6 +124,7 @@ function App() {
           setPlayerProfile={setPlayerProfile}
           toggleNewUser={toggleNewUser}
           dynamicStyle={dynamicStyle}
+          promptUser={promptUser}
         />
       } 
       {(!playerProfile.isNewUser && playerProfile.isStabilized && !isSettings) && 
@@ -130,6 +140,7 @@ function App() {
           dynamicStyle={dynamicStyle}
           clearInputs={clearInputs}
           handleNewCharacter={handleNewCharacter}
+          promptUser={promptUser}
         />
       }
       {(!playerProfile.isNewUser && !playerProfile.isStabilized && !isSettings) &&
@@ -138,6 +149,9 @@ function App() {
           setPlayerProfile={setPlayerProfile}
           dynamicStyle={dynamicStyle}
           handleNewCharacter={handleNewCharacter}
+          prompt={prompt}
+          setPrompt={setPrompt}
+          promptUser= {promptUser}
         />
       }
       {(isSettings) && 
@@ -154,9 +168,10 @@ function App() {
           toggleHpBar={toggleHpBar}
           handleNewCharacter={handleNewCharacter}
           toggleSettings={toggleSettings}
+          promptUser={promptUser}
         />
       }
-      {(prompt.isPromptVisible) && <div id='prompt-box' className='prompt'>
+      {(prompt.isPromptVisible) && <div id='prompt-box' className={dynamicStyle('prompt')}>
         <h3>{prompt.promptCaption}</h3>
         <p>{prompt.promptText}</p>
         <button 

@@ -8,7 +8,8 @@ export function Settings({
     handleNewCharacter,
     isHpBarHidden,
     toggleHpBar,
-    toggleSettings
+    toggleSettings,
+    promptUser
     }) 
     {
     //Style Objects
@@ -22,7 +23,7 @@ export function Settings({
         const lastElementIndex = playerProfile.hitPointHistory.length - 1;
         clearInputs();
         if (playerProfile.hitPointHistory[lastElementIndex] === resetHistoryElement) {
-            alert("ERROR: Hit Points are already reset to max value.");
+            promptUser('Error!', "Hit Points already reset.");
             return null;
         } else setPlayerProfile((prev) => ({
             ...prev,
@@ -31,12 +32,12 @@ export function Settings({
             hitPointHistory: [...playerProfile.hitPointHistory, resetHistoryElement],
             isStabilized: true,
         }));
-        alert("Hit Points reset!");
+        promptUser('Hit Points Reset!', "Hit Points set to maximum value. Temporary Hit Points set to zero.");
     }
 
     const clearHistory = () => {
         setPlayerProfile((prev) => ({...prev, hitPointHistory: []}));
-        alert("History cleared!");
+        promptUser('History Cleared!', "All history items deleted.")
     }
 
     //JSX
@@ -62,7 +63,6 @@ export function Settings({
                         />
                     <span className="slider round"></span>
                 </label>
-            
             <div style={characterSettingsVisibility}>
                 <h3>Character</h3>
                     <button

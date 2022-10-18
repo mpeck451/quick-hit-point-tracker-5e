@@ -8,6 +8,10 @@
 
 button {
     margin: 4px;
+    padding: 4px;
+    padding-left: 10px;
+    padding-right: 10px;
+    min-width: 30px;
     box-shadow: 1px 1px 3px black;
 }
 
@@ -29,8 +33,9 @@ footer {
 }
 
 input {
-    height: 25px;
+    height: 29px;
     width: 35px;
+    padding: 2px;
     box-shadow: 1px 1px 3px black;
 }
 
@@ -69,7 +74,7 @@ input[type=number] {
     width: 450px;
     text-align: center;
     box-shadow: 3px 3px 10px black;
-    padding: 20px;
+    padding: 10px;
 }
 
 #settings-back-button {
@@ -95,11 +100,11 @@ input[type=number] {
     text-align: left;
 }
 .settings {
-    font-size: 20px;
-    height: 30px;
-    width: 30px;
+    font-size: 25px;
+    height: 40px;
+    width: 40px;
     margin-top: -12px;
-    margin-left: 27px;
+    margin-left: 18px;
     padding: 2px;
 }
 

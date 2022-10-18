@@ -2,7 +2,8 @@ export function NewUser({
         playerProfile, 
         setPlayerProfile, 
         toggleNewUser, 
-        dynamicStyle
+        dynamicStyle,
+        promptUser
     }) 
     {
     
@@ -27,7 +28,7 @@ export function NewUser({
     const handleStartTracking = () => {
         if (maxHp > 0) {
             toggleNewUser();
-        } else alert("Max Hit Points must be greater than 0.")
+        } else promptUser('Error', "Max Hit Points must be greater than 0.");
     }
 
     //JSX

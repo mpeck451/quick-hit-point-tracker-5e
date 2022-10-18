@@ -4,7 +4,10 @@ export function DeathSavingThrowsTracker({
         playerProfile,
         setPlayerProfile,
         dynamicStyle,
-        handleNewCharacter
+        handleNewCharacter,
+        prompt,
+        setPrompt,
+        promptUser
     })
     {
 
@@ -39,13 +42,14 @@ export function DeathSavingThrowsTracker({
             deathSavingThrowFailure: 0,
             deathSavingThrowSuccess: 0,
             isStabilized: true,
-        }))
+        }));
+        promptUser('Stabilized!', "Character set to 0 hit points.")
     }
 
     //Secondary Effects
     useEffect(() => {
-        if (failures === 3) {alert('YOU DIED')}
-    }, [failures]);
+        if (failures === 3) {promptUser("YOU DIED")}
+    }, [failures, promptUser]);
 
     useEffect(() => {
         const autoStabilize =() => {
@@ -57,8 +61,8 @@ export function DeathSavingThrowsTracker({
                 isStabilized: true,
             }))
         }
-        if (successes === 3) {return autoStabilize()}
-    }, [successes, playerProfile.hitPointHistory, setPlayerProfile]);
+        if (successes === 3) {promptUser('SUCCESS!', "Your character has been stabilized and set to 0 zero hit points." ); return autoStabilize()}
+    }, [successes, playerProfile.hitPointHistory, setPlayerProfile, promptUser]);
 
     //JSX
     return (
