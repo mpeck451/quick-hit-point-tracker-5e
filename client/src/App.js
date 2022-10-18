@@ -71,7 +71,7 @@ function App() {
   const promptUser = (caption, text = "") => {
       setPrompt((prev) => ({
         ...prev,
-        isPromptVisible: !prompt.isPromptVisible,
+        isPromptVisible: true,
         promptCaption: caption,
         promptText: text,
       }))
@@ -149,8 +149,6 @@ function App() {
           setPlayerProfile={setPlayerProfile}
           dynamicStyle={dynamicStyle}
           handleNewCharacter={handleNewCharacter}
-          prompt={prompt}
-          setPrompt={setPrompt}
           promptUser= {promptUser}
         />
       }

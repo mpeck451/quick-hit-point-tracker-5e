@@ -5,8 +5,6 @@ export function DeathSavingThrowsTracker({
         setPlayerProfile,
         dynamicStyle,
         handleNewCharacter,
-        prompt,
-        setPrompt,
         promptUser
     })
     {
