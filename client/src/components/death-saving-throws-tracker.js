@@ -46,7 +46,9 @@ export function DeathSavingThrowsTracker({
 
     //Secondary Effects
     useEffect(() => {
-        if (failures === 3) {promptUser("YOU DIED")}
+        if (failures === 3) {
+            promptUser("YOU DIED");
+        }
         //eslint-disable-next-line react-hooks/exhaustive-deps
     }, [failures]);
 

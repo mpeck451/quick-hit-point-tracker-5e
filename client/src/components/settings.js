@@ -81,7 +81,7 @@ export function Settings({
             <div>
                 <h3>Other</h3>
                 <p>See this application's <a target="blank" href="https://github.com/mpeck451/quick-hit-point-tracker-5e">source code</a> on Github!</p>
-                <p>Find a bug or have a feature request? Create a new issue ticket on this projects <a target="blank" href="https://github.com/mpeck451/quick-hit-point-tracker-5e/issues">Github Issues page</a>.</p>
+                <p>Find a bug or have a feature request? Create a new issue ticket on this project's <a target="blank" href="https://github.com/mpeck451/quick-hit-point-tracker-5e/issues">Github Issues page</a>.</p>
             </div>
             <button
                 id="settings-back-button"
