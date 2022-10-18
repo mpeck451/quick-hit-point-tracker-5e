@@ -38,7 +38,7 @@
     background-color: #222222;
     box-shadow: 3px 3px 10px black;
     max-width: 500px;
-    min-width: 500px;
+    min-width: 350px;
     margin: auto;
     margin-top: 20px;
     border-radius: var(--border-radius-px);
