@@ -50,7 +50,11 @@ export function MainTracker({
             return pointValue !== 1 ? "points" : "point";
         }
         const promptOnZeroHp = () => {
-            promptUser("You Are Dying!", "Succeed on 3 death saving throws, recieve healing, or be stabilized to prevent your characters death.");
+            if(!(newHp === 0 && (((hp+tempHp)-points)+maxHp) <= 0)) {
+                promptUser("You Are Dying!", "Succeed on 3 death saving throws, recieve healing, or be stabilized to prevent your characters death.");
+            } else {
+                promptUser("YOU DIED!");
+            }
         }
         const calculateDamage = () => {
             if (tempHp > 0) {
@@ -67,7 +71,7 @@ export function MainTracker({
             } else {
                 newHp = hp - points <= 0 ? 0 : hp - points;
                 newHistoryItem = hp - points <= 0 ? "Hit points reduced to 0." : `${points} hit ${handlePluralPoints(points)} lost.`;
-                hp - points <= 0  && !(newHp === 0 && (((hp+tempHp)-points)+maxHp) <= 0) && promptOnZeroHp();
+                hp - points <= 0 && promptOnZeroHp();
             }
             if (newHp === 0 && (((hp+tempHp)-points)+maxHp) <= 0) {
                 newHistoryItem = "Died outright."
@@ -75,7 +79,7 @@ export function MainTracker({
         }
         const calculateHeal = () => {
             newHp = hp + points >= maxHp ? maxHp : hp + points;
-            newHistoryItem = hp + points >= maxHp ? "Hit points restored to maximum value." : `${points} hit ${handlePluralPoints(points)} restored. `;
+            newHistoryItem = hp + points >= maxHp ? "Hit points restored to maximum value." : `${points} hit ${handlePluralPoints(points)} restored.`;
         }
         const calculateTemp = () => {
             newTempHp = tempHp + points;
