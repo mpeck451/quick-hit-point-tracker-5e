@@ -147,7 +147,6 @@ export function MainTracker({
                 <div id="hp-stats-wrapper">
                     <h3>Hit Points: {hp}/{maxHp}</h3>
                     {tempHp !== 0 && (<p>Temporary Hit Points: {tempHp}</p>)}
-                    <h3>{playerProfile.temporaryHitPointMax}</h3>
                 </div>
                 <div id="hp-bar-wrapper" style={hpBarVisibility}>
                     <div style={tempHpBarVisibility}>
