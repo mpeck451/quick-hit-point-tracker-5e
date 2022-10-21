@@ -15,14 +15,16 @@ export function DeathSavingThrowsTracker({
 
     //Functions
     const handleStatusChange = (type, operator) => {
-        type = 'deathSavingThrow' + type;
+        const typeAppended = 'deathSavingThrow' + type;
+        const isDead = failures === 2 && type === "Failure" && operator === 'add';
         setPlayerProfile((prev) => ({
             ...prev,
-            [type]: (operator === 'add' && playerProfile[type] < 3) ? 
-                playerProfile[type] + 1 : 
-                operator === 'subtract' && playerProfile[type] > 0 ? playerProfile[type] - 1 : playerProfile[type]
+            hitPointHistory: [...playerProfile.hitPointHistory, isDead ? 'Death Saving Throw Failure. Character died.' : `Death Saving Throw ${type}`],
+            [typeAppended]: (operator === 'add' && playerProfile[typeAppended] < 3) ? 
+                playerProfile[typeAppended] + 1 : 
+                operator === 'subtract' && playerProfile[typeAppended] > 0 ? playerProfile[typeAppended] - 1 : playerProfile[typeAppended]
         }));
-        if(failures === 2 && type === "deathSavingThrowFailure" && operator === 'add') {promptUser("YOU DIED")}
+        if(isDead) {promptUser("YOU DIED")}
     }
 
     const savingThrowStatus = (type, number) => {
